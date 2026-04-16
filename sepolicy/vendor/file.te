@@ -1,2 +1,3 @@
 type public_adsprpcd_file, file_type;
 type proc_ufs_file, file_type;
+typeattribute proc_ufs_file proc_type;
