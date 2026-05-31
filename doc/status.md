@@ -11,7 +11,7 @@
 - [x] Preview renders
 - [x] Automatic lens switch works
 - [x] Preview lens switch transition renders
-- [ ] Manual lens switch and zoom works for back cameras
+- [x] Manual lens switch and zoom works for back cameras
 - [x] Manual zoom works for front camera
 - [x] OIS when using main camera
 - [x] HIS (OIS+EIS) when using telephoto camera
@@ -19,7 +19,7 @@
 - [ ] Can take photo without crash
 ## Video
 - [x] Preview renders
-- [ ] Lens switch and zoom works
+- [x] Lens switch and zoom works
 - [x] All formats with SDR color space
 - [ ] HDR Dolby Vision
 - [x] EIS for ultra wide camera
@@ -29,7 +29,7 @@
 - [x] Can record video and save to file
 ## Master
 - [x] Preview renders
-- [ ] Lens switch and zoom works
+- [x] Lens switch and zoom works
 - [x] Adjusting params takes effect
 - [ ] Can take photo in JPG format and save to file
 - [ ] Can take photo in RAW format and save to file
