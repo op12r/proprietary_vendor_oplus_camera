@@ -284,3 +284,6 @@ system/etc/permissions/privapp-permissions-oplus.xml
 my_product/etc/camera/cdr_aging_set.json:product/etc/camera/cdr_aging_set.json
 my_product/etc/camera/engineer_camera_config.json:product/etc/camera/engineer_camera_config.json
 system_ext/lib64/liboplushwui_jni.so
+
+system_ext/lib64/libcsextimpl.so
+system/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so:system_ext/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so;MODULE_SUFFIX=_system_ext
