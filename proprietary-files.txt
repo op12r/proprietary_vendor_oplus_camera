@@ -287,3 +287,6 @@ system_ext/lib64/liboplushwui_jni.so
 
 system_ext/lib64/libcsextimpl.so
 system/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so:system_ext/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so;MODULE_SUFFIX=_system_ext
+
+# Oplus Camera Services & AI (OSense)
+vendor/lib64/vendor.oplus.hardware.cammidasservice@1.0.so
