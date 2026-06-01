@@ -4,18 +4,18 @@ net_domain(opluscamera_app)
 allow opluscamera_app adsprpcd_file:dir r_dir_perms;
 allow opluscamera_app public_adsprpcd_file:file r_file_perms;
 
-allow opluscamera_app vendor_data_file:dir  { read open search write add_name remove_name create getattr };
-allow opluscamera_app vendor_data_file:file { read open write create unlink getattr };
-allow opluscamera_app vendor_camera_update_data_file:file { read open write create unlink getattr };
-allow opluscamera_app vendor_camera_update_data_file:dir { read open search write add_name remove_name create getattr };
+allow opluscamera_app vendor_data_file:dir  { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
+allow opluscamera_app vendor_data_file:file { read open write create unlink getattr rename setattr };
+allow opluscamera_app vendor_camera_update_data_file:file { read open write create unlink getattr rename setattr };
+allow opluscamera_app vendor_camera_update_data_file:dir { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
 allow opluscamera_app vendor_xdsp_device:file { read open write create unlink getattr };
 allow opluscamera_app vendor_xdsp_device:chr_file { read open write create unlink getattr ioctl };
 allow opluscamera_app vendor_xdsp_device:dir { read open search write add_name remove_name create getattr };
 allow opluscamera_app vendor_qdsp_device:file { read open write create unlink getattr };
 allow opluscamera_app vendor_qdsp_device:dir { read open search write add_name remove_name create getattr };
 allow opluscamera_app proc_ufs_file:file { read open write create getattr };
-allow opluscamera_app opluscamera_app_data_file:file { read open write create unlink getattr };
-allow opluscamera_app opluscamera_app_data_file:dir { read open search write add_name remove_name create getattr };
+allow opluscamera_app opluscamera_app_data_file:file { read open write create unlink getattr rename setattr };
+allow opluscamera_app opluscamera_app_data_file:dir { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
 
 # FastRPC devices
 # vendor_qdsp_device: read-only only — neverallow on SM8750 blocks write/append
@@ -48,6 +48,8 @@ allow opluscamera_app display_service:service_manager find;
 allow opluscamera_app surfaceflinger_service:service_manager find;
 allow opluscamera_app package_native_service:service_manager find;
 allow opluscamera_app permission_service:service_manager find;
+allow opluscamera_app vendor_hal_offlinecamera_service:service_manager find;
+allow opluscamera_app hal_system_suspend_service:service_manager find;
 dontaudit opluscamera_app vendor_hal_qspmhal_service:service_manager find;
 
 

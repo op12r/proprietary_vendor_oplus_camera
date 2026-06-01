@@ -5,4 +5,10 @@ vendor.aps.                    u:object_r:vendor_camera_prop:s0
 vendor.camera.                 u:object_r:vendor_camera_prop:s0
 vendor.oplus.aps.              u:object_r:vendor_camera_prop:s0
 vendor.oplus.enable.dump.flag  u:object_r:vendor_camera_prop:s0
-ro.oplus.camera.defercap.support    u:object_r:vendor_camera_prop:s0
+ro.oplus.camera.                    u:object_r:vendor_camera_prop:s0
+ro.oplus.system.camera.name         u:object_r:vendor_camera_prop:s0
+ro.oplus.key.actionbutton           u:object_r:vendor_camera_prop:s0
+ro.oplus.flashlight.rio.switch      u:object_r:vendor_camera_prop:s0
+ro.oplus.market.                    u:object_r:vendor_camera_prop:s0
+ro.oplus.radio.                     u:object_r:vendor_camera_prop:s0
+
