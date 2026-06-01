@@ -57,6 +57,8 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups = {
     'system_ext/priv-app/OplusCamera/OplusCamera.apk': blob_fixup()
         .apktool_patch('patches'),
+    'system_ext/framework/com.oplus.camera.unit.sdk.jar': blob_fixup()
+        .apktool_patch('patches-sdk'),
     'odm/etc/init/init.camera_process.rc': blob_fixup()
         .regex_replace(
             '''on post-fs-data
