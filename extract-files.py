@@ -57,6 +57,29 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups = {
     'system_ext/priv-app/OplusCamera/OplusCamera.apk': blob_fixup()
         .apktool_patch('patches'),
+    'odm/etc/init/init.camera_process.rc': blob_fixup()
+        .regex_replace(
+            '''on post-fs-data
+    mkdir /data/vendor/camera_process 0777 camera camera
+    mkdir /data/vendor/camera_process/livephoto 0777 camera camera
+    mkdir /data/vendor/cam_alog 0777 camera camera
+on property:sys.camera.user.removed=*
+    #delete_recursion /data/vendor/camera_process/${sys.camera.user.removed}
+''',
+            '''on post-fs-data
+    mkdir /data/vendor/camera_process 0777 camera camera
+    mkdir /data/vendor/camera_process/livephoto 0777 camera camera
+    mkdir /data/vendor/cam_alog 0777 camera camera
+    # APS file storage for deferred-capture jobs (matches stock init.oplus.rootdir.rc).
+    # Without these, APSFileStorage can't mkdir under system-owned /data/system,
+    # defer-job params are never persisted (keepJob "Not found in FileSystem"),
+    # and the offline metadata collapses to empty -> photo-capture crash.
+    mkdir /data/system/camera_rus 0777 cameraserver cameraserver
+    mkdir /data/vendor/camera_rus 0777 camera camera
+on property:sys.camera.user.removed=*
+    #delete_recursion /data/vendor/camera_process/${sys.camera.user.removed}
+''',
+        )
 }  # fmt: skip
 
 namespace_imports = [
