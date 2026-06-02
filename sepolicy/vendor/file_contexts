@@ -1,4 +1,6 @@
 # Camera
+/(vendor|odm)/lib(64)?/libalog\.so    u:object_r:same_process_hal_file:s0
+/(vendor|odm)/lib(64)?/libalogencrypt\.so    u:object_r:same_process_hal_file:s0
 /(vendor|odm)/lib(64)?/cache\.so    u:object_r:same_process_hal_file:s0
 /(vendor|odm)/lib(64)?/libnn\.so    u:object_r:same_process_hal_file:s0
 /(vendor|odm)/lib(64)?/libui\.so    u:object_r:same_process_hal_file:s0
