@@ -1,0 +1,221 @@
+From e3145afb36a2e4ddd0a2e091532708eef82c22eb Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Wed, 3 Jun 2026 21:40:31 +0800
+Subject: [PATCH] VibrateUtils: Switch to standard EFFECT_DOUBLE_CLICK
+
+E AndroidRuntime: java.lang.NullPointerException: null cannot be cast to non-null type com.oplus.os.LinearmotorVibrator
+---
+ .../gallery/addon/os/VibratorUtils.smali      | 177 +++++-------------
+ 1 file changed, 48 insertions(+), 129 deletions(-)
+
+diff --git a/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali b/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
+index b6da5806b..4cb6f8a23 100644
+--- a/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
++++ b/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
+@@ -1092,7 +1092,7 @@
+ .end method
+ 
+ .method public static final i(Landroid/content/Context;Lcom/oplus/gallery/addon/os/VibratorUtils$EffectType;)V
+-    .locals 2
++    .locals 4
+     .annotation build Landroid/annotation/SuppressLint;
+         value = {
+             "WrongConstant"
+@@ -1103,147 +1103,66 @@
+     .end annotation
+ 
+     .line 1
+-    sget-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/nyc;
++    const-string v0, "context"
++    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
++    const-string v0, "type"
++    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+ 
+     .line 2
++    invoke-static {p0}, Lcom/oplus/gallery/addon/os/VibratorUtils;->c(Landroid/content/Context;)Z
++    move-result v0
++    if-eqz v0, :cond_2
++
+     .line 3
++    const-string v0, "vibrator"
++    invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
++    move-result-object p0
++    const-string v0, "null cannot be cast to non-null type android.os.Vibrator"
++    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
++    check-cast p0, Landroid/os/Vibrator;
++
++    if-eqz p0, :cond_1
++    invoke-virtual {p0}, Landroid/os/Vibrator;->hasVibrator()Z
++    move-result v0
+     if-nez v0, :cond_0
++    goto :goto_0
+ 
+     .line 4
+-    .line 5
+-    new-instance v0, Lcom/oplus/aiunit/vision/nyc;
+-
+-    .line 6
+-    .line 7
+-    const-string v1, "context"
+-
+-    .line 8
+-    .line 9
+-    invoke-static {p0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+-
+-    .line 10
+-    .line 11
+-    .line 12
+-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+-
+-    .line 13
+-    .line 14
+-    .line 15
+-    invoke-virtual {v0, p0}, Lcom/oplus/aiunit/vision/nyc;->a(Landroid/content/Context;)V
+-
+-    .line 16
+-    .line 17
+-    .line 18
+-    sput-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/nyc;
+-
+-    .line 19
+-    .line 20
+     :cond_0
+-    sget-object p0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/nyc;
+-
+-    .line 21
+-    .line 22
+-    if-eqz p0, :cond_6
+-
+-    .line 23
+-    .line 24
+-    sget-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils$b;->a:[I
+-
+-    .line 25
+-    .line 26
+-    invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I
+-
+-    .line 27
+-    .line 28
+-    .line 29
+-    move-result p1
+-
+-    .line 30
+-    aget p1, v0, p1
+-
+-    .line 31
+-    .line 32
+-    const/4 v0, 0x1
+-
+-    .line 33
+-    if-eq p1, v0, :cond_4
+-
+-    .line 34
+-    .line 35
+-    const/4 v1, 0x2
+-
+-    .line 36
+-    if-eq p1, v1, :cond_3
+-
+-    .line 37
+-    .line 38
+-    const/4 v1, 0x3
+-
+-    .line 39
+-    if-eq p1, v1, :cond_5
+-
+-    .line 40
+-    .line 41
+     const/4 v0, 0x4
++    invoke-static {v0}, Landroid/os/VibrationEffect;->createPredefined(I)Landroid/os/VibrationEffect;
++    move-result-object v0
++    :try_start_0
++    invoke-virtual {p0, v0}, Landroid/os/Vibrator;->vibrate(Landroid/os/VibrationEffect;)V
++    :try_end_0
++    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
++    goto :goto_1
+ 
+-    .line 42
+-    if-eq p1, v0, :cond_2
+-
+-    .line 43
+-    .line 44
+-    const/4 v0, 0x5
+-
+-    .line 45
+-    if-ne p1, v0, :cond_1
+-
+-    .line 46
+-    .line 47
+-    const/4 v0, 0x0
+-
+-    .line 48
+-    goto :goto_0
++    :catch_0
++    move-exception p0
++    const-string v0, "VibratorUtils"
++    const-string v1, "Failed to vibrate with EFFECT_DOUBLE_CLICK"
++    const/4 v2, 0x0
++    invoke-static {v0, v1, p0}, Lcom/oplus/aiunit/vision/cpe;->c(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
++    goto :goto_1
+ 
+-    .line 49
++    .line 5
+     :cond_1
+-    new-instance p0, Lkotlin/NoWhenBranchMatchedException;
+-
+-    .line 50
+-    .line 51
+-    invoke-direct {p0}, Lkotlin/NoWhenBranchMatchedException;-><init>()V
+-
+-    .line 52
+-    .line 53
+-    .line 54
+-    throw p0
++    :goto_0
++    const-string p0, "VibratorUtils"
++    const-string v0, "Vibrator not available or has no vibrator"
++    const/4 v1, 0x0
++    invoke-static {p0, v0, v1}, Lcom/oplus/aiunit/vision/cpe;->c(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
++    return-void
+ 
+-    .line 55
++    .line 6
+     :cond_2
+-    const/16 v0, 0x32
+-
+-    .line 56
+-    .line 57
+-    goto :goto_0
+-
+-    .line 58
+-    :cond_3
+-    move v0, v1
+-
+-    .line 59
+-    goto :goto_0
+-
+-    .line 60
+-    :cond_4
+-    const/16 v0, 0x44
+-
+-    .line 61
+-    .line 62
+-    :cond_5
+-    :goto_0
+-    invoke-virtual {p0, v0}, Lcom/oplus/aiunit/vision/nyc;->b(I)V
++    const-string p0, "VibratorUtils"
++    const-string p1, "the current device does not enable vibration"
++    const/4 v0, 0x0
++    invoke-static {p0, p1, v0}, Lcom/oplus/aiunit/vision/cpe;->c(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
++    return-void
+ 
+-    .line 63
+-    .line 64
+-    .line 65
+-    :cond_6
++    :goto_1
+     return-void
+ .end method
+-- 
+2.54.0
+
