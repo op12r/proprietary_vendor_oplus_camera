@@ -1,0 +1,28 @@
+From dfdca674643bdaa6dfc2e98e5434d3688c54b609 Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Fri, 5 Jun 2026 16:07:29 +0800
+Subject: [PATCH] Add required items under theme PhotoEditor_Theme.Hassel
+
+---
+ res/values/styles.xml | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/res/values/styles.xml b/res/values/styles.xml
+index 44e930984..8c2db9dd9 100644
+--- a/res/values/styles.xml
++++ b/res/values/styles.xml
+@@ -6695,6 +6695,11 @@
+         <item name="couiColorPrimaryTextOnPopup">@color/coui_color_primary_on_popup_orange_light</item>
+         <item name="couiColorSecondary">@color/coui_color_secondary_orange_light</item>
+         <item name="videoEditorActionBarDoneTextColorPressed">@color/action_bar_done_text_color_pressed_hassel</item>
++        <item name="de_toolkit_panel_background">#ffffffff</item>
++        <item name="de_toolkit_panel_background_m">@drawable/de_toolkit_shadow_day</item>
++        <item name="de_toolkit_undo_drawable_m">@drawable/de_toolkit_ic_undo_selector_night_m</item>
++        <item name="de_toolkit_redo_drawable_m">@drawable/de_toolkit_ic_redo_selector_night_m</item>
++        <item name="de_toolkit_stroke_size_tint">#ffffffff</item>
+     </style>
+     <style name="PictureBottomActionBarIcon" parent="@style/EditorRippleAnim">
+         <item name="android:layout_width">@dimen/picture3d_bottom_action_bar_icon_size</item>
+-- 
+2.54.0
+
