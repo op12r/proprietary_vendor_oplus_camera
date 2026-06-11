@@ -1,7 +1,7 @@
-From 0a7c95b20478f98dadf741053959cc33766322f8 Mon Sep 17 00:00:00 2001
+From 84f34fcdad97c4ba5d4eb6b0febd9322cde7f4fb Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:10:21 +0800
-Subject: [PATCH] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
+Subject: [PATCH 3/4] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
  registerReceiver()
 
 E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED should be specified when a receiver isn't being registered exclusively for system broadcasts
@@ -10,7 +10,7 @@ E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEI
  1 file changed, 15 insertions(+), 8 deletions(-)
 
 diff --git a/smali_classes8/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes8/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-index dec7c7fda..f1832c254 100644
+index dec7c7f..f1832c2 100644
 --- a/smali_classes8/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 +++ b/smali_classes8/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 @@ -262,36 +262,43 @@

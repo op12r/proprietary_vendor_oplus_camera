@@ -1,14 +1,14 @@
-From 8b9b320b42aca08d796b0d67c738e13ce4d216ea Mon Sep 17 00:00:00 2001
+From 8fc6535e1c578a358542599caebae8c8dfd36102 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Tue, 26 May 2026 17:21:52 +0800
-Subject: [PATCH] Use default font instead of OPlus specific ones
+Subject: [PATCH 1/2] Use default font instead of OPlus specific ones
 
 ---
  smali/s7/t3.smali | 293 +---------------------------------------------
  1 file changed, 3 insertions(+), 290 deletions(-)
 
 diff --git a/smali/s7/t3.smali b/smali/s7/t3.smali
-index 2d107333..dd68b4eb 100644
+index 2d10733..dd68b4e 100644
 --- a/smali/s7/t3.smali
 +++ b/smali/s7/t3.smali
 @@ -263,300 +263,13 @@

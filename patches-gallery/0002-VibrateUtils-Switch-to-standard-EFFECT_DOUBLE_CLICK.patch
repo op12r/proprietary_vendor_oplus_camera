@@ -1,7 +1,7 @@
-From e3145afb36a2e4ddd0a2e091532708eef82c22eb Mon Sep 17 00:00:00 2001
+From 1dd09b81c37aa6b021f69d0e0bbf50f3f05b7659 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:40:31 +0800
-Subject: [PATCH] VibrateUtils: Switch to standard EFFECT_DOUBLE_CLICK
+Subject: [PATCH 2/4] VibrateUtils: Switch to standard EFFECT_DOUBLE_CLICK
 
 E AndroidRuntime: java.lang.NullPointerException: null cannot be cast to non-null type com.oplus.os.LinearmotorVibrator
 ---
@@ -9,7 +9,7 @@ E AndroidRuntime: java.lang.NullPointerException: null cannot be cast to non-nul
  1 file changed, 48 insertions(+), 129 deletions(-)
 
 diff --git a/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali b/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
-index b6da5806b..4cb6f8a23 100644
+index b6da580..4cb6f8a 100644
 --- a/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
 +++ b/smali_classes7/com/oplus/gallery/addon/os/VibratorUtils.smali
 @@ -1092,7 +1092,7 @@
