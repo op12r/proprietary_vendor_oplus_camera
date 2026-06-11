@@ -5,7 +5,7 @@
 - [x] Camera app can get privileged video stream
 - [x] Filters take effect
 - [x] Flash works
-- [ ] 3-rd party gallery apps support
+- [x] Gallery works
 - [x] SeLinux enforcing
 ## Photo
 - [x] Preview renders
@@ -16,7 +16,7 @@
 - [x] OIS when using main camera
 - [x] HIS (OIS+EIS) when using telephoto camera
 - [x] Action mode (60fps preview) works
-- [ ] Can take photo without crash
+- [x] Can take photo without crash
 ## Video
 - [x] Preview renders
 - [x] Lens switch and zoom works
@@ -31,8 +31,8 @@
 - [x] Preview renders
 - [x] Lens switch and zoom works
 - [x] Adjusting params takes effect
-- [ ] Can take photo in JPG format and save to file
-- [ ] Can take photo in RAW format and save to file
+- [x] Can take photo in JPG format and save to file
+- [x] Can take photo in RAW format and save to file
 ## Portrait
 - [x] Preview renders
 - [x] Lens switch works
@@ -64,6 +64,6 @@
 - [x] Preview renders
 - [x] Manual lens switch works
 - [x] Filters take effect
-- [x] Can take photo and save (but with incorrect colors)
+- [x] Can take photo and save
 ## Other Modes
 - [ ] Untested or broken
