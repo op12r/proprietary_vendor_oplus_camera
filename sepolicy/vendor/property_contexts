@@ -11,4 +11,5 @@ ro.oplus.key.actionbutton           u:object_r:vendor_camera_prop:s0
 ro.oplus.flashlight.rio.switch      u:object_r:vendor_camera_prop:s0
 ro.oplus.market.                    u:object_r:vendor_camera_prop:s0
 ro.oplus.radio.                     u:object_r:vendor_camera_prop:s0
-
+ro.vendor.oplus.market.name         u:object_r:vendor_camera_prop:s0
+ro.vendor.oplus.market.enname       u:object_r:vendor_camera_prop:s0
