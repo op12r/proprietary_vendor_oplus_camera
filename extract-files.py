@@ -88,8 +88,8 @@ on property:sys.camera.user.removed=*
 
 namespace_imports = [
     'vendor/oplus/camera/camera',
-    'vendor/oneplus/dodge',
-    'vendor/oneplus/sm8750-common',
+    'vendor/oneplus/giuliac',
+    'vendor/oneplus/sm8650-common',
     'hardware/oplus',
 ]
 
