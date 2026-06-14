@@ -42,7 +42,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 $(call soong_config_set,camera,package_name,com.oplus.packageName)
 
 # Video
-$(call soong_config_set_bool,camera,override_format_from_reserved,true)
+$(call soong_config_set,camera,override_format_from_reserved,true)
 
 # SEpolicy
 include vendor/oplus/camera/sepolicy/SEPolicy.mk
