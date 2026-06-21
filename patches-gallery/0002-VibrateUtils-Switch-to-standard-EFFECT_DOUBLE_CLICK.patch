@@ -1,26 +1,26 @@
-From 92e822e9f766dee0dcdd714af3f1ff2dfe509eb9 Mon Sep 17 00:00:00 2001
+From f7bd608962f478ce1f311c82879046fce420f482 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:40:31 +0800
 Subject: [PATCH] VibrateUtils: Switch to standard EFFECT_DOUBLE_CLICK
 
 E AndroidRuntime: java.lang.NullPointerException: null cannot be cast to non-null type com.oplus.os.LinearmotorVibrator
 ---
- .../gallery/addon/os/VibratorUtils.smali      | 109 +++++++-----------
- 1 file changed, 44 insertions(+), 65 deletions(-)
+ .../gallery/addon/os/VibratorUtils.smali      | 111 +++++++-----------
+ 1 file changed, 45 insertions(+), 66 deletions(-)
 
-diff --git a/smali_classes9/com/oplus/gallery/addon/os/VibratorUtils.smali b/smali_classes9/com/oplus/gallery/addon/os/VibratorUtils.smali
-index 73c8fa8b8..62cf30b5e 100644
---- a/smali_classes9/com/oplus/gallery/addon/os/VibratorUtils.smali
-+++ b/smali_classes9/com/oplus/gallery/addon/os/VibratorUtils.smali
-@@ -615,83 +615,62 @@
+diff --git a/smali_classes10/com/oplus/gallery/addon/os/VibratorUtils.smali b/smali_classes10/com/oplus/gallery/addon/os/VibratorUtils.smali
+index 459ee6eec..b6258cc19 100644
+--- a/smali_classes10/com/oplus/gallery/addon/os/VibratorUtils.smali
++++ b/smali_classes10/com/oplus/gallery/addon/os/VibratorUtils.smali
+@@ -449,83 +449,62 @@
      .annotation runtime Lkotlin/jvm/JvmStatic;
      .end annotation
  
--    sget-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/t3e;
+-    sget-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/kkd;
 -
 -    if-nez v0, :cond_0
 -
--    new-instance v0, Lcom/oplus/aiunit/vision/t3e;
+-    new-instance v0, Lcom/oplus/aiunit/vision/kkd;
 -
 -    const-string v1, "context"
 -
@@ -35,7 +35,7 @@ index 73c8fa8b8..62cf30b5e 100644
 +    move-result v0
 +    if-eqz v0, :cond_2
  
--    invoke-virtual {v0, p0}, Lcom/oplus/aiunit/vision/t3e;->a(Landroid/content/Context;)V
+-    invoke-virtual {v0, p0}, Lcom/oplus/aiunit/vision/kkd;->a(Landroid/content/Context;)V
 +    const-string v0, "vibrator"
 +    invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 +    move-result-object p0
@@ -43,7 +43,7 @@ index 73c8fa8b8..62cf30b5e 100644
 +    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
 +    check-cast p0, Landroid/os/Vibrator;
  
--    sput-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/t3e;
+-    sput-object v0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/kkd;
 +    if-eqz p0, :cond_1
 +    invoke-virtual {p0}, Landroid/os/Vibrator;->hasVibrator()Z
 +    move-result v0
@@ -51,7 +51,7 @@ index 73c8fa8b8..62cf30b5e 100644
 +    goto :goto_0
  
      :cond_0
--    sget-object p0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/t3e;
+-    sget-object p0, Lcom/oplus/gallery/addon/os/VibratorUtils;->d:Lcom/oplus/aiunit/vision/kkd;
 -
 -    if-eqz p0, :cond_6
 -
@@ -64,14 +64,7 @@ index 73c8fa8b8..62cf30b5e 100644
 -    aget p1, v0, p1
  
      const/4 v0, 0x1
-+    invoke-static {v0}, Landroid/os/VibrationEffect;->createPredefined(I)Landroid/os/VibrationEffect;
-+    move-result-object v0
-+    :try_start_0
-+    invoke-virtual {p0, v0}, Landroid/os/Vibrator;->vibrate(Landroid/os/VibrationEffect;)V
-+    :try_end_0
-+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-+    goto :goto_1
- 
+-
 -    if-eq p1, v0, :cond_4
 -
 -    const/4 v1, 0x2
@@ -93,6 +86,14 @@ index 73c8fa8b8..62cf30b5e 100644
 -    const/4 v0, 0x0
 -
 -    goto :goto_0
++    invoke-static {v0}, Landroid/os/VibrationEffect;->createPredefined(I)Landroid/os/VibrationEffect;
++    move-result-object v0
++    :try_start_0
++    invoke-virtual {p0, v0}, Landroid/os/Vibrator;->vibrate(Landroid/os/VibrationEffect;)V
++    :try_end_0
++    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
++    goto :goto_1
++
 +    :catch_0
 +    move-exception p0
 +    const-string v0, "VibratorUtils"
@@ -129,7 +130,7 @@ index 73c8fa8b8..62cf30b5e 100644
 -
 -    :cond_5
 -    :goto_0
--    invoke-virtual {p0, v0}, Lcom/oplus/aiunit/vision/t3e;->b(I)V
+-    invoke-virtual {p0, v0}, Lcom/oplus/aiunit/vision/kkd;->b(I)V
 +    const-string p0, "VibratorUtils"
 +    const-string p1, "the current device does not enable vibration"
 +    const/4 v0, 0x0
@@ -141,5 +142,5 @@ index 73c8fa8b8..62cf30b5e 100644
      return-void
  .end method
 -- 
-2.54.0
+2.43.0
 
