@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: vivy <vivy@aosp-builder>
+Date: Wed, 24 Jun 2026 21:26:22 +0000
+Subject: [PATCH] facebeauty: probe /system_ext (not /product) for ProductJni
+
+S9: the guarded libApsFaceBeautyPreviewProductJni.so ships at /system_ext/lib64
+on LOS (my_product->system_ext remap), so the <clinit> /product/lib64 probe
+failed -> unguarded in-APK fallback -> all-zero FaceBeautyParams -> lib2DSlender
+adjustParam+836 SIGSEGV. Point the probe at where the guarded lib actually is.
+---
+ smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali b/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
+index f58791b..fb54177 100644
+--- a/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
++++ b/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
+@@ -16,7 +16,7 @@
+ 
+     const-string v2, "ApsFaceBeautyPreviewProductJni"
+ 
+-    const-string v3, "/product/lib64/libApsFaceBeautyPreviewProductJni.so"
++    const-string v3, "/system_ext/lib64/libApsFaceBeautyPreviewProductJni.so"
+ 
+     if-nez v0, :cond_3
+ 
+-- 
+2.25.1
+
