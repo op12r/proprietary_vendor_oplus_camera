@@ -65,7 +65,6 @@ my_product/lib64/libMsEffectSdk.so:system_ext/lib64/libMsEffectSdk.so
 my_product/lib64/liblivephoto.frc.jni.so:system_ext/lib64/liblivephoto.frc.jni.so
 
 system/lib64/vendor.oplus.hardware.cameraextension@1.0.so
-system/lib64/vendor.oplus.hardware.cameraextension-V1-ndk.so
 system_ext/lib64/libbsproxy.so
 system_ext/lib64/liboplus-uah-client.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.oplus.hardware.cameraMDM@1.0.so
@@ -178,7 +177,6 @@ my_product/etc/camera/engineer_camera_config.json:product/etc/camera/engineer_ca
 system_ext/lib64/liboplushwui_jni.so
 
 system_ext/lib64/libcsextimpl.so
-system/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so:system_ext/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk.so;MODULE_SUFFIX=_system_ext
 
 odm/etc/camera/omoji/assets/sdk_assets/ai_face_processor_e51.bundle
 odm/etc/camera/omoji/assets/sdk_assets/controller_cpp.bundle
