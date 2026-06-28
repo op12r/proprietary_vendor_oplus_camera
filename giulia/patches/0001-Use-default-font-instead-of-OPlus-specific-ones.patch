@@ -1,0 +1,320 @@
+From a4f875aff9285fcc842187017dc23ed3de2dcfa1 Mon Sep 17 00:00:00 2001
+From: realahnet <syedmusicrealise@gmail.com>
+Date: Mon, 29 Jun 2026 02:30:12 +0500
+Subject: [PATCH 1/4] Use default font instead of OPlus specific ones
+
+---
+ smali/t7/u3.smali | 295 +---------------------------------------------
+ 1 file changed, 3 insertions(+), 292 deletions(-)
+
+diff --git a/smali/t7/u3.smali b/smali/t7/u3.smali
+index 8b10adc7..7f22b1da 100644
+--- a/smali/t7/u3.smali
++++ b/smali/t7/u3.smali
+@@ -263,300 +263,11 @@
+ .end method
+ 
+ .method public static a(Landroid/content/Context;)Landroid/graphics/Typeface;
+-    .locals 6
+-
+-    .line 1
+-    sget-object v0, Lt7/n0;->a:Landroid/graphics/Typeface;
+-
+-    .line 2
+-    .line 3
+-    if-nez v0, :cond_2
+-
+-    .line 4
+-    .line 5
+-    const-string v0, "TypeFaceUtil"
+-
+-    .line 6
+-    .line 7
+-    const-string v1, "\'wght\' "
+-
+-    .line 8
+-    .line 9
+-    sget-object v2, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
+-
+-    .line 10
+-    .line 11
+-    :try_start_0
+-    const-class v3, Landroid/content/res/OplusBaseConfiguration;
+-
+-    .line 12
+-    .line 13
+-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+-
+-    .line 14
+-    .line 15
+-    .line 16
+-    move-result-object p0
+-
+-    .line 17
+-    invoke-virtual {p0}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+-
+-    .line 18
+-    .line 19
+-    .line 20
+-    move-result-object p0
+-
+-    .line 21
+-    invoke-static {v3, p0}, Lcom/oplus/util/OplusTypeCastingHelper;->typeCasting(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    .line 22
+-    .line 23
+-    .line 24
+-    move-result-object p0
+-
+-    .line 25
+-    check-cast p0, Landroid/content/res/OplusBaseConfiguration;
+-
+-    .line 26
+-    .line 27
+-    iget-object p0, p0, Landroid/content/res/OplusBaseConfiguration;->mOplusExtraConfiguration:Loplus/content/res/OplusExtraConfiguration;
+-
+-    .line 28
+-    .line 29
+-    iget p0, p0, Loplus/content/res/OplusExtraConfiguration;->mFontVariationSettings:I
+-
+-    .line 30
+-    .line 31
+-    const v3, 0xf000
+-
+-    .line 32
+-    .line 33
+-    .line 34
+-    and-int/2addr v3, p0
+-
+-    .line 35
+-    shr-int/lit8 v3, v3, 0xc
+-
+-    .line 36
+-    .line 37
+-    and-int/lit16 p0, p0, 0xfff
+-
+-    .line 38
+-    .line 39
+-    sget-boolean v4, Loplus/content/res/OplusFontUtils;->isFlipFontUsed:Z
+-    :try_end_0
+-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
+-    .catch Ljava/lang/NoSuchMethodError; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    .line 40
+-    .line 41
+-    if-nez v4, :cond_1
+-
+-    .line 42
+-    .line 43
+-    const/16 v4, 0x190
+-
+-    .line 44
+-    .line 45
+-    const-string v5, "sys-sans-en"
+-
+-    .line 46
+-    .line 47
+-    if-eqz v3, :cond_0
+-
+-    .line 48
+-    .line 49
+-    :try_start_1
+-    sget-boolean v3, Lt7/u3;->q:Z
+-
+-    .line 50
+-    .line 51
+-    if-eqz v3, :cond_1
+-
+-    .line 52
+-    .line 53
+-    new-instance v3, Landroid/graphics/Typeface$Builder;
+-
+-    .line 54
+-    .line 55
+-    invoke-direct {v3, v5}, Landroid/graphics/Typeface$Builder;-><init>(Ljava/lang/String;)V
+-
+-    .line 56
+-    .line 57
+-    .line 58
+-    new-instance v5, Ljava/lang/StringBuilder;
+-
+-    .line 59
+-    .line 60
+-    invoke-direct {v5, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+-
+-    .line 61
+-    .line 62
+-    .line 63
+-    invoke-virtual {v5, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+-
+-    .line 64
+-    .line 65
+-    .line 66
+-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    .line 67
+-    .line 68
+-    .line 69
+-    move-result-object p0
+-
+-    .line 70
+-    invoke-virtual {v3, p0}, Landroid/graphics/Typeface$Builder;->setFontVariationSettings(Ljava/lang/String;)Landroid/graphics/Typeface$Builder;
+-
+-    .line 71
+-    .line 72
+-    .line 73
+-    move-result-object p0
+-
+-    .line 74
+-    invoke-virtual {p0, v4}, Landroid/graphics/Typeface$Builder;->setWeight(I)Landroid/graphics/Typeface$Builder;
+-
+-    .line 75
+-    .line 76
+-    .line 77
+-    move-result-object p0
+-
+-    .line 78
+-    invoke-virtual {p0}, Landroid/graphics/Typeface$Builder;->build()Landroid/graphics/Typeface;
+-
+-    .line 79
+-    .line 80
+-    .line 81
+-    move-result-object v2
+-
+-    .line 82
+-    goto :goto_2
+-
+-    .line 83
+-    :catch_0
+-    move-exception p0
+-
+-    .line 84
+-    goto :goto_1
+-
+-    .line 85
+-    :catch_1
+-    move-exception p0
+-
+-    .line 86
+-    goto :goto_0
+-
+-    .line 87
+-    :cond_0
+-    sget-boolean p0, Lt7/u3;->q:Z
+-
+-    .line 88
+-    .line 89
+-    if-eqz p0, :cond_1
+-
+-    .line 90
+-    .line 91
+-    new-instance p0, Landroid/graphics/Typeface$Builder;
+-
+-    .line 92
+-    .line 93
+-    invoke-direct {p0, v5}, Landroid/graphics/Typeface$Builder;-><init>(Ljava/lang/String;)V
+-
+-    .line 94
+-    .line 95
+-    .line 96
+-    invoke-virtual {p0, v4}, Landroid/graphics/Typeface$Builder;->setWeight(I)Landroid/graphics/Typeface$Builder;
+-
+-    .line 97
+-    .line 98
+-    .line 99
+-    move-result-object p0
+-
+-    .line 100
+-    invoke-virtual {p0}, Landroid/graphics/Typeface$Builder;->build()Landroid/graphics/Typeface;
+-
+-    .line 101
+-    .line 102
+-    .line 103
+-    move-result-object v2
+-    :try_end_1
+-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
+-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_0
+-    .catch Ljava/lang/NoSuchMethodError; {:try_start_1 .. :try_end_1} :catch_0
+-
+-    .line 104
+-    goto :goto_2
+-
+-    .line 105
+-    :goto_0
+-    :try_start_2
+-    const-string v1, "some thing has error!"
+-
+-    .line 106
+-    .line 107
+-    invoke-static {v0, v1, p0}, Ll8/a;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+-    :try_end_2
+-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_0
+-    .catch Ljava/lang/NoSuchMethodError; {:try_start_2 .. :try_end_2} :catch_0
+-
+-    .line 108
+-    .line 109
+-    .line 110
+-    goto :goto_2
+-
+-    .line 111
+-    :goto_1
+-    new-instance v1, Ljava/lang/StringBuilder;
+-
+-    .line 112
+-    .line 113
+-    const-string v3, "getFontTypeface, error: "
+-
+-    .line 114
+-    .line 115
+-    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+-
+-    .line 116
+-    .line 117
+-    .line 118
+-    invoke-virtual {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+-
+-    .line 119
+-    .line 120
+-    .line 121
+-    move-result-object p0
+-
+-    .line 122
+-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    .line 123
+-    .line 124
+-    .line 125
+-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    .line 126
+-    .line 127
+-    .line 128
+-    move-result-object p0
+-
+-    .line 129
+-    invoke-static {v0, p0}, Ll8/a;->h(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    .line 130
+-    .line 131
+-    .line 132
+-    :cond_1
+-    :goto_2
+-    sput-object v2, Lt7/n0;->a:Landroid/graphics/Typeface;
++    .locals 1
+ 
+-    .line 133
+-    .line 134
+-    :cond_2
+-    sget-object p0, Lt7/n0;->a:Landroid/graphics/Typeface;
++    sget-object v0, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
+ 
+-    .line 135
+-    .line 136
+-    return-object p0
++    return-object v0
+ .end method
+ 
+ .method public static b()Landroid/graphics/Typeface;
+-- 
+2.54.0
+

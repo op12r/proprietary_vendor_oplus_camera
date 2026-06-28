@@ -10,7 +10,9 @@ Prebuilt stock oplus Camera to include in custom ROM builds.
 
 ```
 # Camera
-$(call inherit-product-if-exists, vendor/oplus/camera/opluscamera.mk)
+$(call inherit-product-if-exists, vendor/oplus/camera/YOUR_DEVICE_NAME/opluscamera.mk)
 ```
+
+**NOTE: if your device's folder does not exist, then copy one of the existing folders and adapt it to your device.**
 
 3. Ensure that the PRODUCT_BRAND is either oneplus or oppo or realme and that it is not overriden by any of the safetynet hacks.

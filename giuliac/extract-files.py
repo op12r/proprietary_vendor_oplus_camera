@@ -1,4 +1,4 @@
-#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
+#!/usr/bin/env -S PYTHONPATH=../../../../tools/extract-utils python3
 #
 # SPDX-FileCopyrightText: 2016 The CyanogenMod Project
 # SPDX-FileCopyrightText: 2017-2024 The LineageOS Project
@@ -87,16 +87,16 @@ on property:sys.camera.user.removed=*
 }  # fmt: skip
 
 namespace_imports = [
-    'vendor/oplus/camera/camera',
+    'vendor/oplus/camera/giuliac/blobs',
     'vendor/oneplus/giuliac',
     'vendor/oneplus/sm8650-common',
     'hardware/oplus',
 ]
 
 module = ExtractUtilsModule(
-    'camera',
-    'oplus/camera',
-    device_rel_path='vendor/oplus/camera',
+    'blobs',
+    'oplus/camera/giuliac',
+    device_rel_path='vendor/oplus/camera/giuliac',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,

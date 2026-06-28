@@ -1,3 +1,5 @@
+LOCAL_PATH := vendor/oplus/camera/giuliac
+
 # Blob dependencies
 PRODUCT_PACKAGES += \
     android.hardware.graphics.common-V3-ndk.vendor
@@ -20,7 +22,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.vendor.camera.privapp.list=com.oplus.camera \
     ro.com.google.lens.oem_camera_package=com.oplus.camera \
-    ro.com.google.lens.oem_image_package=com.coloros.gallery3d \
     ro.oplus.system.camera.name=com.oplus.camera \
     ro.camera.disableHeicUltraHDR=1 \
     oplus.software.camera.10bit=1 \
@@ -47,8 +48,8 @@ TARGET_CAMERA_PACKAGE_NAME := com.oplus.packageName
 # Video
 TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
 
-# SEpolicy
-include vendor/oplus/camera/sepolicy/SEPolicy.mk
-
 # Inherit from camera-vendor.mk
-$(call inherit-product, vendor/oplus/camera/camera/camera-vendor.mk)
+$(call inherit-product, vendor/oplus/camera/giuliac/blobs/blobs-vendor.mk)
+
+# Common SEpolicy
+include vendor/oplus/camera/sepolicy/SEPolicy.mk
