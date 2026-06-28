@@ -39,10 +39,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.logd.log.load.vendor.qti.camera.provider-service_64.upper_limit=1500 \
 
 # Photo
-$(call soong_config_set,camera,package_name,com.oplus.packageName)
+TARGET_CAMERA_PACKAGE_NAME := com.oplus.packageName
 
 # Video
-$(call soong_config_set,camera,override_format_from_reserved,true)
+TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
 
 # SEpolicy
 include vendor/oplus/camera/sepolicy/SEPolicy.mk
