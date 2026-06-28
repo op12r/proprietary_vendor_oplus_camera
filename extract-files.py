@@ -59,8 +59,6 @@ blob_fixups = {
         .apktool_patch('patches'),
     'system_ext/framework/com.oplus.camera.unit.sdk.jar': blob_fixup()
         .apktool_patch('patches-sdk'),
-    'system_ext/priv-app/OppoGallery2/OppoGallery2.apk': blob_fixup()
-        .apktool_patch('patches-gallery'),
     'system_ext/priv-app/OplusAppPlatform/OplusAppPlatform.apk': blob_fixup()
         .apktool_patch('patches-appplatform'),
     'odm/etc/init/init.camera_process.rc': blob_fixup()
