@@ -69,6 +69,8 @@ system_ext/lib64/libbsproxy.so
 system_ext/lib64/liboplus-uah-client.so;MODULE_SUFFIX=_system_ext
 system_ext/lib64/vendor.oplus.hardware.cameraMDM@1.0.so
 
+vendor/lib64/libiccprofile.so
+
 vendor/lib64/libpnc_cl_program.bin
 vendor/lib64/bm4a73v08s12n58.bin
 vendor/lib64/bm4a73v08s12n24.bin
