@@ -43,6 +43,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 $(call soong_config_set,camera,target_ships_oplus_cam,true)
 $(call soong_config_set,libgui,num_buffer_slots,96)
 
+# OPlus FWK
+$(call inherit-product, hardware/oplus/oplus-fwk/oplus-fwk.mk)
+
 # Photo
 TARGET_CAMERA_PACKAGE_NAME := com.oplus.packageName
 

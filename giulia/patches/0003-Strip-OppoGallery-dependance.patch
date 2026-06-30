@@ -1,15 +1,15 @@
-From 724302a903dcce9de1917abf567b0a284541b6cf Mon Sep 17 00:00:00 2001
-From: realahnet <syedmusicrealise@gmail.com>
-Date: Mon, 29 Jun 2026 02:31:35 +0500
-Subject: [PATCH 4/4] Strip OppoGallery dependance
+From 974ae0dd4166ede12081e314d1ebf4da419c659d Mon Sep 17 00:00:00 2001
+From: port <port@local>
+Date: Tue, 30 Jun 2026 14:22:49 +0500
+Subject: [PATCH] Strip OppoGallery dependence - use standard ACTION_VIEW
+ intent
 
 ---
- .../oplus/camera/helper/GalleryHelper.smali   | 154 +++---------------
- smali_classes26/ko/h1.smali                   |  97 +----------
- 2 files changed, 23 insertions(+), 228 deletions(-)
+ .../oplus/camera/helper/GalleryHelper.smali   | 150 +++---------------
+ 1 file changed, 20 insertions(+), 130 deletions(-)
 
 diff --git a/smali_classes12/com/oplus/camera/helper/GalleryHelper.smali b/smali_classes12/com/oplus/camera/helper/GalleryHelper.smali
-index ecc8e9da..820db15b 100644
+index ecc8e9da..4d4f950c 100644
 --- a/smali_classes12/com/oplus/camera/helper/GalleryHelper.smali
 +++ b/smali_classes12/com/oplus/camera/helper/GalleryHelper.smali
 @@ -2919,7 +2919,7 @@
@@ -21,24 +21,6 @@ index ecc8e9da..820db15b 100644
  
      .line 40
      .line 41
-@@ -5502,7 +5502,7 @@
-     move-result-object v1
- 
-     .line 1293
--    invoke-virtual {v13, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
-+    # invoke-virtual {v13, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
- 
-     .line 1294
-     .line 1295
-@@ -5686,7 +5686,7 @@
-     move-result-object v1
- 
-     .line 1379
--    invoke-virtual {v13, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
-+    # invoke-virtual {v13, v1}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
- 
-     .line 1380
-     .line 1381
 @@ -5999,147 +5999,37 @@
  .method public final q(Landroid/content/Intent;ZLandroid/net/Uri;)V
      .locals 2
@@ -204,117 +186,6 @@ index ecc8e9da..820db15b 100644
 -    .line 73
 -    :goto_0
      return-void
- .end method
- 
-diff --git a/smali_classes26/ko/h1.smali b/smali_classes26/ko/h1.smali
-index 70604dfd..26e6afc2 100644
---- a/smali_classes26/ko/h1.smali
-+++ b/smali_classes26/ko/h1.smali
-@@ -116,105 +116,10 @@
- .end method
- 
- .method public static b(Landroid/app/Activity;Ljava/lang/String;)Z
--    .locals 2
-+    .locals 1
- 
--    .line 1
-     const/4 v0, 0x0
- 
--    .line 2
--    if-eqz p0, :cond_0
--
--    .line 3
--    .line 4
--    invoke-virtual {p0}, Landroid/app/Activity;->isFinishing()Z
--
--    .line 5
--    .line 6
--    .line 7
--    move-result v1
--
--    .line 8
--    if-nez v1, :cond_0
--
--    .line 9
--    .line 10
--    :try_start_0
--    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
--
--    .line 11
--    .line 12
--    .line 13
--    move-result-object p0
--
--    .line 14
--    const/16 v1, 0x200
--
--    .line 15
--    .line 16
--    invoke-virtual {p0, p1, v1}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
--
--    .line 17
--    .line 18
--    .line 19
--    move-result-object p0
--    :try_end_0
--    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
--
--    .line 20
--    goto :goto_0
--
--    .line 21
--    :catch_0
--    move-exception p0
--
--    .line 22
--    const-string p1, "DisableUitl"
--
--    .line 23
--    .line 24
--    const-string v1, "isAppDiable, Exception: NameNotFoundException."
--
--    .line 25
--    .line 26
--    invoke-static {p1, v1, p0}, Ll8/a;->A(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
--
--    .line 27
--    .line 28
--    .line 29
--    const/4 p0, 0x0
--
--    .line 30
--    :goto_0
--    if-eqz p0, :cond_0
--
--    .line 31
--    .line 32
--    iget-boolean p1, p0, Landroid/content/pm/ApplicationInfo;->enabled:Z
--
--    .line 33
--    .line 34
--    if-nez p1, :cond_0
--
--    .line 35
--    .line 36
--    iget p0, p0, Landroid/content/pm/ApplicationInfo;->flags:I
--
--    .line 37
--    .line 38
--    const/4 p1, 0x1
--
--    .line 39
--    and-int/2addr p0, p1
--
--    .line 40
--    if-eqz p0, :cond_0
--
--    .line 41
--    .line 42
--    move v0, p1
--
--    .line 43
--    :cond_0
-     return v0
  .end method
  
 -- 

@@ -1,6 +1,6 @@
-From 146e52ea1e5841d5d68f420669b67ba9dfd50ea0 Mon Sep 17 00:00:00 2001
-From: spkal01 <kalligeross@gmail.com>
-Date: Mon, 1 Jun 2026 14:53:25 +0800
+From 6b517705fa72faca938c5f13eb8e35cfd7e154ae Mon Sep 17 00:00:00 2001
+From: port <port@local>
+Date: Tue, 30 Jun 2026 14:28:20 +0500
 Subject: [PATCH] fixes
 
 ---
@@ -125,7 +125,7 @@ index 8045fc6..aa3c7f2 100644
  
  # direct methods
 diff --git a/smali/com/oplus/ocs/camera/producer/mode/BaseMode.smali b/smali/com/oplus/ocs/camera/producer/mode/BaseMode.smali
-index efc5891..5bdf1cd 100644
+index a4cd1e3..148144f 100644
 --- a/smali/com/oplus/ocs/camera/producer/mode/BaseMode.smali
 +++ b/smali/com/oplus/ocs/camera/producer/mode/BaseMode.smali
 @@ -15589,24 +15589,8 @@
