@@ -25,7 +25,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.oplus.system.camera.name=com.oplus.camera \
     ro.camera.disableHeicUltraHDR=1 \
     oplus.software.camera.10bit=1 \
-    vendor.camera.aux.packagelist=com.oplus.camera \
     vendor.camera.skip_unconfigure.packagelist=com.oplus.camera \
     ro.oplus.camera.facing.front.need.disable.nfc=1 \
     ro.oplus.camera.speechassist=true \
