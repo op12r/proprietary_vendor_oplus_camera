@@ -48,6 +48,7 @@ my_product/lib64/libsingle_camera_bokeh_native.so:system_ext/lib64/libsingle_cam
 my_product/lib64/libsingle_camera_bokeh2_native.so:system_ext/lib64/libsingle_camera_bokeh2_native.so
 my_product/lib64/libst_mobile.so:system_ext/lib64/libst_mobile.so
 my_product/lib64/libst_sticker_jni.so:system_ext/lib64/libst_sticker_jni.so;FIX_SONAME
+my_product/lib64/libHdrTransform-platform-jni.so:system_ext/lib64/libHdrTransform-platform-jni.so
 
 odm/lib64/libOplusSecurity.so
 
