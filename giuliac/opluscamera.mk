@@ -48,10 +48,10 @@ $(call soong_config_set,libgui,num_buffer_slots,96)
 $(call inherit-product, hardware/oplus/oplus-fwk/oplus-fwk.mk)
 
 # Photo
-TARGET_CAMERA_PACKAGE_NAME := com.oplus.packageName
+$(call soong_config_set,camera,package_name,com.oplus.packageName)
 
 # Video
-TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
+$(call soong_config_set_bool,camera,override_format_from_reserved,true)
 
 # Inherit from camera-vendor.mk
 $(call inherit-product, vendor/oplus/camera/giuliac/blobs/blobs-vendor.mk)
