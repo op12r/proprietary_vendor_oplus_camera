@@ -1,0 +1,66 @@
+From 869755b7b4d3896cc74fb84e3edff6396ae32a36 Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Wed, 3 Jun 2026 21:10:21 +0800
+Subject: [PATCH 3/5] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
+ registerReceiver()
+
+E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED should be specified when a receiver isn't being registered exclusively for system broadcasts
+---
+ .../uikit/broadcast/bus/ActionReceiver.smali  | 20 +++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/smali_classes11/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes11/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
+index 9c3b3cd98..4139166b9 100644
+--- a/smali_classes11/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
++++ b/smali_classes11/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
+@@ -268,33 +268,41 @@
+ 
+     .line 61
+     .line 62
++    # --- START PATCH: conditionally add RECEIVER_NOT_EXPORTED (0x4) ---
++    and-int/lit8 v0, v7, 0x6        # 0x6 = 0x2 | 0x4 (both export flags)
++    if-eqz v0, :cond_no_or
++    # Already has EXPORTED or NOT_EXPORTED, keep as is
++    goto :cond_skip_or
++    :cond_no_or
++    or-int/lit8 v7, v7, 0x4
++    :cond_skip_or
++    # --- END PATCH ---
+     move-object v3, p0
+ 
+-    .line 63
+     invoke-virtual/range {v2 .. v7}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;I)Landroid/content/Intent;
+     :try_end_0
+     .catchall {:try_start_0 .. :try_end_0} :catchall_0
+ 
++    .line 63
+     .line 64
+     .line 65
+-    .line 66
+     invoke-static {}, Lcom/oplus/aiunit/vision/azc;->o()V
+ 
++    .line 66
+     .line 67
+     .line 68
+-    .line 69
+     return-void
+ 
+-    .line 70
++    .line 69
+     :catchall_0
+     move-exception p0
+ 
+-    .line 71
++    .line 70
+     invoke-static {}, Lcom/oplus/aiunit/vision/azc;->o()V
+ 
++    .line 71
+     .line 72
+     .line 73
+-    .line 74
+     throw p0
+ .end method
+ 
+-- 
+2.55.0
+
