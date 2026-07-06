@@ -58,4 +58,12 @@
         <permission name="android.permission.MANAGE_USERS"/>
         <permission name="android.permission.INSTALL_PACKAGES"/>
     </privapp-permissions>
+
+<!-- OPLUS gallery3d -->
+    <privapp-permissions package="com.coloros.gallery3d">
+        <permission name="android.permission.SCHEDULE_EXACT_ALARM"/>
+        <permission name="android.permission.GET_APP_OPS_STATS"/>
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
 </permissions>
