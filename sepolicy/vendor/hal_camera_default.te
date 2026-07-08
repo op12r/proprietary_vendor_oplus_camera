@@ -1,6 +1,8 @@
 allow hal_camera_default public_adsprpcd_file:file r_file_perms;
 allow hal_camera_default vendor_xdsp_device:chr_file r_file_perms;
 
+allow hal_camera_default self:capability { ipc_lock sys_nice };
+
 # System properties
 allow hal_camera_default aac_drc_prop:file { open read getattr map };
 allow hal_camera_default ab_update_gki_prop:file { open read getattr map };

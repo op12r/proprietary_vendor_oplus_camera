@@ -17,6 +17,9 @@ allow opluscamera_app proc_ufs_file:file { read open write create getattr };
 allow opluscamera_app opluscamera_app_data_file:file { read open write create unlink getattr rename setattr };
 allow opluscamera_app opluscamera_app_data_file:dir { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
 
+allow opluscamera_app vendor_camera_data_file:dir  { read open search write add_name remove_name create getattr };
+allow opluscamera_app vendor_camera_data_file:file { read open write create unlink getattr };
+
 # FastRPC devices
 # vendor_qdsp_device: read-only only — neverallow on SM8750 blocks write/append
 # for non-HAL domains. The camera app only needs to open/read/ioctl for DSP
