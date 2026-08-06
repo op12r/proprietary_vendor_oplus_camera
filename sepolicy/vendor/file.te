@@ -1,3 +1,5 @@
 type public_adsprpcd_file, file_type;
-type proc_ufs_file, file_type;
-typeattribute proc_ufs_file proc_type;
+# procfs, so fs_type -- not file_type. file_type lands the type in the
+# { file_type -... } sets that init.te and vendor_init.te grant dir
+# create/write on, which violates the plat neverallow on proc_type:dir.
+type proc_ufs_file, fs_type, proc_type;
