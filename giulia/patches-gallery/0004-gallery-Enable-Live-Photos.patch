@@ -1,25 +1,22 @@
-From 6a6501f116053fea7593268c33c5dd0c5ea33b02 Mon Sep 17 00:00:00 2001
+From 4931d9e73a9f3359683921fe47b5bf96b22e027a Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 1 Jul 2026 17:01:28 +0800
-Subject: [PATCH 5/5] gallery: Enable Live Photos
+Subject: [PATCH 4/4] gallery: Enable Live Photos
 
 ---
- .../com/oplus/aiunit/vision/gs5.smali         | 85 ++++++++++++++++++-
+ smali/com/oplus/aiunit/vision/y2a.smali | 85 ++++++++++++++++++++++++-
  1 file changed, 84 insertions(+), 1 deletion(-)
 
-diff --git a/smali_classes10/com/oplus/aiunit/vision/gs5.smali b/smali_classes10/com/oplus/aiunit/vision/gs5.smali
-index 086af50d7..448349546 100644
---- a/smali_classes10/com/oplus/aiunit/vision/gs5.smali
-+++ b/smali_classes10/com/oplus/aiunit/vision/gs5.smali
-@@ -271,13 +271,16 @@
+diff --git a/smali/com/oplus/aiunit/vision/y2a.smali b/smali/com/oplus/aiunit/vision/y2a.smali
+index 4dfe3a0a0..bd51c0cb3 100644
+--- a/smali/com/oplus/aiunit/vision/y2a.smali
++++ b/smali/com/oplus/aiunit/vision/y2a.smali
+@@ -193,10 +193,13 @@
  .end method
  
  .method public static final c(Ljava/lang/String;ZZ)Z
 -    .locals 3
 +    .locals 4
-     .annotation build Lkotlin/jvm/JvmOverloads;
-     .end annotation
- 
      .annotation runtime Lkotlin/jvm/JvmStatic;
      .end annotation
  
@@ -29,10 +26,10 @@ index 086af50d7..448349546 100644
      .line 1
      const-string v0, "configId"
  
-@@ -448,7 +451,87 @@
-     .line 70
-     .line 71
-     :goto_5
+@@ -355,7 +358,87 @@
+     .line 64
+     .line 65
+     .line 66
 +    # -------------------------------------------------------------
 +    #  Log original result (optional, remove if not needed)
 +    # -------------------------------------------------------------
@@ -116,7 +113,7 @@ index 086af50d7..448349546 100644
 +
  .end method
  
- .method public static synthetic d(Ljava/lang/String;ZI)Z
+ .method public static synthetic d(ILjava/lang/String;Z)Z
 -- 
 2.55.0
 
