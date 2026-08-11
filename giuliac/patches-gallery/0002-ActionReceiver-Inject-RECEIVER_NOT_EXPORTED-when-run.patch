@@ -1,23 +1,22 @@
-From 4ef675fa9c9b7de52f9078aaeada6638deefd717 Mon Sep 17 00:00:00 2001
+From 0f69d92dd7f60aa23448e283a0cd231fb9fb4519 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:10:21 +0800
-Subject: [PATCH 3/5] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
+Subject: [PATCH 2/4] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
  registerReceiver()
 
 E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED should be specified when a receiver isn't being registered exclusively for system broadcasts
 ---
- .../uikit/broadcast/bus/ActionReceiver.smali           | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ .../foundation/uikit/broadcast/bus/ActionReceiver.smali  | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/smali_classes12/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes12/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-index 8c0395889..6a0d31e55 100644
---- a/smali_classes12/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-+++ b/smali_classes12/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-@@ -166,7 +166,15 @@
-     iget-object v6, p0, Lcom/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver;->b:Landroid/os/Handler;
+diff --git a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
+index e757e3041..5b37caf8d 100644
+--- a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
++++ b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
+@@ -153,6 +153,15 @@
  
-     iget v7, v0, Lcom/oplus/aiunit/vision/n40;->c:I
--
+     iget v7, v0, Lcom/oplus/aiunit/vision/yz0;->c:I
+ 
 +    # --- START PATCH: conditionally add RECEIVER_NOT_EXPORTED (0x4) ---
 +    and-int/lit8 v0, v7, 0x6        # 0x6 = 0x2 | 0x4 (both export flags)
 +    if-eqz v0, :cond_no_or

@@ -1,0 +1,51 @@
+From 752f702abf859b6be4b97f918a5483c8e11c4d3b Mon Sep 17 00:00:00 2001
+From: Hecheng Yu <kde-yyds@qq.com>
+Date: Sun, 5 Jul 2026 22:40:38 -0600
+Subject: [PATCH 4/4] gallery: Enable Live Photos
+
+---
+ smali/com/oplus/aiunit/vision/p5a.smali | 27 +++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/smali/com/oplus/aiunit/vision/p5a.smali b/smali/com/oplus/aiunit/vision/p5a.smali
+index da1994479..325b9ea02 100644
+--- a/smali/com/oplus/aiunit/vision/p5a.smali
++++ b/smali/com/oplus/aiunit/vision/p5a.smali
+@@ -214,7 +214,34 @@
+ 
+     invoke-static {p1, p0, v0, v1}, Lcom/oplus/aiunit/vision/od5;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+ 
++    # --- START PATCH: Enable Live Photos (override olive keys to true) ---
++    const-string v0, "feature_is_support_olive"
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    move-result v1
++    if-nez v1, :cond_olive_enabled
++
++    const-string v0, "feature_is_support_olive_slide_play"
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    move-result v1
++    if-nez v1, :cond_olive_enabled
++
++    const-string v0, "feature_is_support_video_extract_olive"
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    move-result v1
++    if-nez v1, :cond_olive_enabled
++
++    const-string v0, "feature_olive_slow_motion_recommend_popup_shown"
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    move-result v1
++    if-nez v1, :cond_olive_enabled
++
++    # Not an Olive key – return original result
+     return p2
++
++    :cond_olive_enabled
++    const/4 v0, 0x1
++    return v0
++    # --- END PATCH ---
+ .end method
+ 
+ .method public static synthetic d(ILjava/lang/String;Z)Z
+-- 
+2.55.0
+
