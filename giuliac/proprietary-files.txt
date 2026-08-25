@@ -185,3 +185,5 @@ system_ext/lib64/libcsextimpl.so
 
 odm/etc/camera/omoji/assets/sdk_assets/ai_face_processor_e51.bundle
 odm/etc/camera/omoji/assets/sdk_assets/controller_cpp.bundle
+
+system/lib64/libbase.so:system_ext/lib64/libbase-stock.so;FIX_SONAME

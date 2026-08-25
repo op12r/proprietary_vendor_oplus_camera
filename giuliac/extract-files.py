@@ -67,7 +67,8 @@ blob_fixups = {
             'android.hardware.camera.provider-V4-ndk.so',)
         .replace_needed(
             'android.hardware.camera.device-V3-ndk.so',
-            'android.hardware.camera.device-V4-ndk.so',),
+            'android.hardware.camera.device-V4-ndk.so',)
+        .replace_needed('libbase.so', 'libbase-stock.so'),
     'system_ext/priv-app/OplusCamera/OplusCamera.apk': blob_fixup()
         .apktool_patch('patches'),
     'system_ext/framework/com.oplus.camera.unit.sdk.jar': blob_fixup()
