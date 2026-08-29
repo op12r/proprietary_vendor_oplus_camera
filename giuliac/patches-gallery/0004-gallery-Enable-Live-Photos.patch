@@ -1,19 +1,19 @@
-From 752f702abf859b6be4b97f918a5483c8e11c4d3b Mon Sep 17 00:00:00 2001
+From bdd6c56ceffaa7e9326aa56b34e4b4f7b4795db6 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Sun, 5 Jul 2026 22:40:38 -0600
 Subject: [PATCH 4/4] gallery: Enable Live Photos
 
 ---
- smali/com/oplus/aiunit/vision/p5a.smali | 27 +++++++++++++++++++++++++
+ smali/com/oplus/aiunit/vision/k7a.smali | 27 +++++++++++++++++++++++++
  1 file changed, 27 insertions(+)
 
-diff --git a/smali/com/oplus/aiunit/vision/p5a.smali b/smali/com/oplus/aiunit/vision/p5a.smali
-index da1994479..325b9ea02 100644
---- a/smali/com/oplus/aiunit/vision/p5a.smali
-+++ b/smali/com/oplus/aiunit/vision/p5a.smali
+diff --git a/smali/com/oplus/aiunit/vision/k7a.smali b/smali/com/oplus/aiunit/vision/k7a.smali
+index ba0536525..c9f0051b5 100644
+--- a/smali/com/oplus/aiunit/vision/k7a.smali
++++ b/smali/com/oplus/aiunit/vision/k7a.smali
 @@ -214,7 +214,34 @@
  
-     invoke-static {p1, p0, v0, v1}, Lcom/oplus/aiunit/vision/od5;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+     invoke-static {p1, p0, v0, v1}, Lcom/oplus/aiunit/vision/fe5;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
  
 +    # --- START PATCH: Enable Live Photos (override olive keys to true) ---
 +    const-string v0, "feature_is_support_olive"

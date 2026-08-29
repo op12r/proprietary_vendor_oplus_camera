@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from Oneplus Ace 5 (ColorOS 16 PKG110_16.0.9.400(EX01))
+## are from Oneplus Ace 5 (ColorOS 16 PKG110_16.0.10.500(EX01))
 
 # Camera
 my_product/app/OplusCamera/OplusCamera.apk:system_ext/priv-app/OplusCamera/OplusCamera.apk;OVERRIDES=Camera2,GoogleCameraGo

@@ -1,4 +1,4 @@
-From 0f69d92dd7f60aa23448e283a0cd231fb9fb4519 Mon Sep 17 00:00:00 2001
+From bff810a3fcc7595152c9aff4fac570cef5bc79ca Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:10:21 +0800
 Subject: [PATCH 2/4] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
@@ -10,12 +10,12 @@ E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEI
  1 file changed, 9 insertions(+)
 
 diff --git a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-index e757e3041..5b37caf8d 100644
+index 28c57eb85..b64570901 100644
 --- a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 +++ b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 @@ -153,6 +153,15 @@
  
-     iget v7, v0, Lcom/oplus/aiunit/vision/yz0;->c:I
+     iget v7, v0, Lcom/oplus/aiunit/vision/zz0;->c:I
  
 +    # --- START PATCH: conditionally add RECEIVER_NOT_EXPORTED (0x4) ---
 +    and-int/lit8 v0, v7, 0x6        # 0x6 = 0x2 | 0x4 (both export flags)

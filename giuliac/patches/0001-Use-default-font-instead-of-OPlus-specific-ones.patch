@@ -1,16 +1,16 @@
-From b87b5f984143b9dbec9a195e4cd7038aa26163bd Mon Sep 17 00:00:00 2001
+From b09d21a5d1d43b53b2cf02d5352c02254ab611bc Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Mon, 10 Aug 2026 22:13:58 -0600
 Subject: [PATCH 1/2] Use default font instead of OPlus specific ones
 
 ---
- smali/r7/q3.smali | 293 +---------------------------------------------
+ smali/r7/s3.smali | 293 +---------------------------------------------
  1 file changed, 3 insertions(+), 290 deletions(-)
 
-diff --git a/smali/r7/q3.smali b/smali/r7/q3.smali
-index de537061..bccb29f7 100644
---- a/smali/r7/q3.smali
-+++ b/smali/r7/q3.smali
+diff --git a/smali/r7/s3.smali b/smali/r7/s3.smali
+index 0c46cdad..76cdb615 100644
+--- a/smali/r7/s3.smali
++++ b/smali/r7/s3.smali
 @@ -263,300 +263,13 @@
  .end method
  
@@ -19,7 +19,7 @@ index de537061..bccb29f7 100644
 +    .locals 1
  
      .line 1
--    sget-object v0, Lr7/j0;->a:Landroid/graphics/Typeface;
+-    sget-object v0, Lr7/k0;->a:Landroid/graphics/Typeface;
 +    sget-object v0, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
  
      .line 2
@@ -121,7 +121,7 @@ index de537061..bccb29f7 100644
 -    .line 48
 -    .line 49
 -    :try_start_1
--    sget-boolean v3, Lr7/q3;->q:Z
+-    sget-boolean v3, Lr7/s3;->q:Z
 -
 -    .line 50
 -    .line 51
@@ -202,7 +202,7 @@ index de537061..bccb29f7 100644
 -
 -    .line 87
 -    :cond_0
--    sget-boolean p0, Lr7/q3;->q:Z
+-    sget-boolean p0, Lr7/s3;->q:Z
 -
 -    .line 88
 -    .line 89
@@ -248,7 +248,7 @@ index de537061..bccb29f7 100644
 -
 -    .line 106
 -    .line 107
--    invoke-static {v0, v1, p0}, Li8/a;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+-    invoke-static {v0, v1, p0}, Lj8/b;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 -    :try_end_2
 -    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_0
 -    .catch Ljava/lang/NoSuchMethodError; {:try_start_2 .. :try_end_2} :catch_0
@@ -294,19 +294,19 @@ index de537061..bccb29f7 100644
 -    move-result-object p0
 -
 -    .line 129
--    invoke-static {v0, p0}, Li8/a;->h(Ljava/lang/String;Ljava/lang/String;)V
+-    invoke-static {v0, p0}, Lj8/b;->h(Ljava/lang/String;Ljava/lang/String;)V
 -
 -    .line 130
 -    .line 131
 -    .line 132
 -    :cond_1
 -    :goto_2
--    sput-object v2, Lr7/j0;->a:Landroid/graphics/Typeface;
+-    sput-object v2, Lr7/k0;->a:Landroid/graphics/Typeface;
 -
 -    .line 133
 -    .line 134
 -    :cond_2
--    sget-object p0, Lr7/j0;->a:Landroid/graphics/Typeface;
+-    sget-object p0, Lr7/k0;->a:Landroid/graphics/Typeface;
 -
 -    .line 135
 -    .line 136
