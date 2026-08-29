@@ -1,4 +1,4 @@
-From 5bb35197b0b6e6c1ad9232d7129cd89bc0a23cf2 Mon Sep 17 00:00:00 2001
+From 60e476b66ec248bf48e74d2c459c7adf0b678477 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:10:21 +0800
 Subject: [PATCH 2/4] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
@@ -10,7 +10,7 @@ E AndroidRuntime: java.lang.SecurityException: com.oneplus.gallery: One of RECEI
  1 file changed, 10 insertions(+)
 
 diff --git a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
-index 57b1dd1ab..2576e87d6 100644
+index 0647fd67d..35fa50169 100644
 --- a/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 +++ b/smali_classes2/com/oplus/gallery/foundation/uikit/broadcast/bus/ActionReceiver.smali
 @@ -189,6 +189,16 @@

@@ -1,16 +1,16 @@
-From 4931d9e73a9f3359683921fe47b5bf96b22e027a Mon Sep 17 00:00:00 2001
+From 7f177e743a2bb0d9bcb36897d1d258aaba44bb8b Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 1 Jul 2026 17:01:28 +0800
 Subject: [PATCH 4/4] gallery: Enable Live Photos
 
 ---
- smali/com/oplus/aiunit/vision/y2a.smali | 85 ++++++++++++++++++++++++-
+ smali/com/oplus/aiunit/vision/f4a.smali | 85 ++++++++++++++++++++++++-
  1 file changed, 84 insertions(+), 1 deletion(-)
 
-diff --git a/smali/com/oplus/aiunit/vision/y2a.smali b/smali/com/oplus/aiunit/vision/y2a.smali
-index 4dfe3a0a0..bd51c0cb3 100644
---- a/smali/com/oplus/aiunit/vision/y2a.smali
-+++ b/smali/com/oplus/aiunit/vision/y2a.smali
+diff --git a/smali/com/oplus/aiunit/vision/f4a.smali b/smali/com/oplus/aiunit/vision/f4a.smali
+index fd489c08a..9ece32a32 100644
+--- a/smali/com/oplus/aiunit/vision/f4a.smali
++++ b/smali/com/oplus/aiunit/vision/f4a.smali
 @@ -193,10 +193,13 @@
  .end method
  
