@@ -1,15 +1,16 @@
 # Camera
+# The camera app (a coredomain platform app) reads all of these vendor
+# properties. Anything left unlabelled falls back to vendor_default_prop, which
+# coredomain is not allowed to read (vendor_internal_prop neverallow).
 persist.vendor.aps             u:object_r:vendor_camera_prop:s0
-ro.vendor.oplus.market.watermark    u:object_r:vendor_camera_prop:s0
+persist.vendor.oplus.          u:object_r:vendor_camera_prop:s0
+ro.oplus.                      u:object_r:vendor_camera_prop:s0
+ro.vendor.oplus.               u:object_r:vendor_camera_prop:s0
 vendor.aps.                    u:object_r:vendor_camera_prop:s0
 vendor.camera.                 u:object_r:vendor_camera_prop:s0
-vendor.oplus.aps.              u:object_r:vendor_camera_prop:s0
-vendor.oplus.enable.dump.flag  u:object_r:vendor_camera_prop:s0
-ro.oplus.camera.                    u:object_r:vendor_camera_prop:s0
+vendor.oplus.                  u:object_r:vendor_camera_prop:s0
 ro.oplus.system.camera.name         u:object_r:vendor_camera_prop:s0
 ro.oplus.key.actionbutton           u:object_r:vendor_camera_prop:s0
 ro.oplus.flashlight.rio.switch      u:object_r:vendor_camera_prop:s0
-ro.oplus.market.                    u:object_r:vendor_camera_prop:s0
-ro.oplus.radio.                     u:object_r:vendor_camera_prop:s0
 ro.vendor.oplus.market.name         u:object_r:vendor_camera_prop:s0
 ro.vendor.oplus.market.enname       u:object_r:vendor_camera_prop:s0

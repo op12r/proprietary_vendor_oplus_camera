@@ -17,8 +17,8 @@ allow opluscamera_app proc_ufs_file:file { read open write create getattr };
 allow opluscamera_app opluscamera_app_data_file:file { read open write create unlink getattr rename setattr };
 allow opluscamera_app opluscamera_app_data_file:dir { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
 
-allow opluscamera_app vendor_camera_data_file:dir  { read open search write add_name remove_name create getattr };
-allow opluscamera_app vendor_camera_data_file:file { read open write create unlink getattr };
+allow opluscamera_app vendor_camera_data_file:dir { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
+allow opluscamera_app vendor_camera_data_file:file { read open write create unlink getattr rename setattr };
 
 # FastRPC devices
 # vendor_qdsp_device: read-only only — neverallow on SM8750 blocks write/append
@@ -32,6 +32,14 @@ allow opluscamera_app selinuxfs:file { read open };
 # ADSP RPC dir search
 allow opluscamera_app adsprpcd_file:dir search;
 
+# OPLUS vendor libraries (libui-stock.so, libutils-stock.so, libvega_common.so,
+# libHIS.so, etc.) are loaded directly by the camera app. These fall back to
+# vendor_file. system_executes_vendor_violators (set in private policy) exempts
+# the coredomain neverallows for these accesses.
+allow opluscamera_app vendor_file:file { read open getattr map execute execute_no_trans };
+allow opluscamera_app vendor_file:dir r_dir_perms;
+allow opluscamera_app same_process_hal_file:file { read open getattr map execute };
+
 # Binder: camera app ↔ camera HAL
 allow opluscamera_app hal_camera_default:binder { call transfer };
 
@@ -39,10 +47,20 @@ allow opluscamera_app hal_camera_default:binder { call transfer };
 get_prop(opluscamera_app, vendor_camera_prop)
 dontaudit opluscamera_app default_prop:file { read open getattr map };
 get_prop(opluscamera_app, camera_config_prop)
+
+# Camera app sets properties via the property service socket
+allow opluscamera_app property_socket:sock_file write;
+
+# Camera app searches some per-user data dirs while scanning storage
+allow opluscamera_app shell_data_file:dir search;
+
+# APS (Advanced Photo System) inspects cgroup v2 while setting up DSP/CPU
+# scheduling.
+allow opluscamera_app cgroup_v2:dir search;
+
 binder_use(opluscamera_app)
 binder_call(opluscamera_app, system_server)
 binder_call(opluscamera_app, surfaceflinger)
-allow opluscamera_app vendor_default_prop:file { open read getattr map };
 
 
 

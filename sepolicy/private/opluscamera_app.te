@@ -1,3 +1,21 @@
+# OplusCamera is a preinstalled platform app (system_ext). Treble labeling
+# requires all platform apps to be labeled with a coredomain type, so add the
+# coredomain attribute here (system_ext private policy), not in vendor policy.
+typeattribute opluscamera_app coredomain;
+
+# The camera app legitimately stores data under /data/vendor (camera effects,
+# tuning data, etc.). The platform neverallows block coredomain access to
+# vendor_data_file, so use the designated exemption attribute for
+# data-between-core-and-vendor traffic.
+typeattribute opluscamera_app data_between_core_and_vendor_violators;
+
+# The OnePlus camera loads OPLUS vendor libraries (libui-stock, libutils-stock,
+# libvega_common, libHIS, etc.) and the FastRPC shell directly. These are
+# vendor_file_type files, which coredomain cannot read/execute per the platform
+# neverallows. This is the designated exemption attribute for platform domains
+# that must execute vendor binaries (same mechanism profcollectd etc. use).
+typeattribute opluscamera_app system_executes_vendor_violators;
+
 #  Own data directory
 allow opluscamera_app opluscamera_app_data_file:dir  create_dir_perms;
 allow opluscamera_app opluscamera_app_data_file:file create_file_perms;

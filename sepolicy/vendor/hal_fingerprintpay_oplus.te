@@ -1,0 +1,7 @@
+# hal_fingerprintpay_oplus reads vendor.oplus.* props that the camera port
+# labels as vendor_camera_prop. grant read access so the fingerprint HAL is not
+# broken by the camera property labeling.
+get_prop(hal_fingerprintpay_oplus, vendor_camera_prop)
+
+# hal_fingerprint_default also reads these props (same reason).
+get_prop(hal_fingerprint_default, vendor_camera_prop)

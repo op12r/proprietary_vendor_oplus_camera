@@ -7,6 +7,7 @@ allow hal_camera_default self:capability { ipc_lock sys_nice };
 allow hal_camera_default aac_drc_prop:file { open read getattr map };
 allow hal_camera_default ab_update_gki_prop:file { open read getattr map };
 allow hal_camera_default adaptive_haptics_prop:file { open read getattr map };
+get_prop(hal_camera_default, zygote_config_prop)
 
 # /proc/boost_pool/camera
 allow hal_camera_default proc:file { write open getattr };
