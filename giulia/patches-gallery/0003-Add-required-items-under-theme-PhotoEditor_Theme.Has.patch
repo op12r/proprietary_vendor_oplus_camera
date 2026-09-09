@@ -1,4 +1,4 @@
-From 3e6ee78d25c47b9a5323fa0891e9494127080343 Mon Sep 17 00:00:00 2001
+From 87f4196329c08f1a1ded0176aac101b79ab05117 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Fri, 5 Jun 2026 16:07:29 +0800
 Subject: [PATCH 3/4] Add required items under theme PhotoEditor_Theme.Hassel
@@ -8,7 +8,7 @@ Subject: [PATCH 3/4] Add required items under theme PhotoEditor_Theme.Hassel
  1 file changed, 3 insertions(+)
 
 diff --git a/res/values/styles.xml b/res/values/styles.xml
-index 3576d2670..adba054f7 100644
+index fb35ec466..2ce8814bc 100644
 --- a/res/values/styles.xml
 +++ b/res/values/styles.xml
 @@ -6944,6 +6944,9 @@

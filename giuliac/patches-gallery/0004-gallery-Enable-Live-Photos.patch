@@ -1,4 +1,4 @@
-From bdd6c56ceffaa7e9326aa56b34e4b4f7b4795db6 Mon Sep 17 00:00:00 2001
+From 49010ee3efb53aeac6004e0c96ddec1be5e36460 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Sun, 5 Jul 2026 22:40:38 -0600
 Subject: [PATCH 4/4] gallery: Enable Live Photos

@@ -1,4 +1,4 @@
-From 73bb7d5ae587cdc463dab828ff67b17a5d0bd332 Mon Sep 17 00:00:00 2001
+From cfd279227314dc8ccb9b68b4232b2ba5c45dff59 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Sun, 9 Aug 2026 20:12:48 -0600
 Subject: [PATCH 1/2] Use default font instead of OPlus specific ones

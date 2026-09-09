@@ -1,4 +1,4 @@
-From 60e476b66ec248bf48e74d2c459c7adf0b678477 Mon Sep 17 00:00:00 2001
+From bbdd800777d8e45300ba22c7b123fbe503eb7e08 Mon Sep 17 00:00:00 2001
 From: Hecheng Yu <kde-yyds@qq.com>
 Date: Wed, 3 Jun 2026 21:10:21 +0800
 Subject: [PATCH 2/4] ActionReceiver: Inject RECEIVER_NOT_EXPORTED when running
