@@ -114,6 +114,8 @@ namespace_imports = [
     'vendor/oneplus/giulia',
     'vendor/oneplus/sm8650-common',
     'hardware/oplus',
+    'vendor/qcom/common/system/audio',
+    'vendor/qcom/common/system/perf',
 ]
 
 module = ExtractUtilsModule(
