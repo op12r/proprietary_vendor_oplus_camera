@@ -2,7 +2,7 @@ app_domain(opluscamera_app)
 net_domain(opluscamera_app)
 
 allow opluscamera_app adsprpcd_file:dir r_dir_perms;
-allow opluscamera_app public_adsprpcd_file:file r_file_perms;
+allow opluscamera_app { adsprpcd_file public_adsprpcd_file }:file r_file_perms;
 
 allow opluscamera_app vendor_data_file:dir  { read open search write add_name remove_name create getattr rename setattr reparent rmdir };
 allow opluscamera_app vendor_data_file:file { read open write create unlink getattr rename setattr };
