@@ -1,0 +1,47 @@
+Subject: [PATCH] sdk: Log sensor readiness once per photo capture
+
+Expose the actual and requested sensor modes and the number of 30 ms
+polls, including captures rejected after the stock 30-poll timeout.
+Use Android Log directly so diagnostics do not depend on OEM log flags.
+This patch accompanies restoring the stock isSensorModeNeedWait check.
+
+diff --git a/smali/com/oplus/ocs/camera/producer/mode/PhotoMode.smali b/smali/com/oplus/ocs/camera/producer/mode/PhotoMode.smali
+--- a/smali/com/oplus/ocs/camera/producer/mode/PhotoMode.smali
++++ b/smali/com/oplus/ocs/camera/producer/mode/PhotoMode.smali
+@@ -8061,6 +8061,36 @@
+     invoke-static {v6, p3, v5, v4}, Lcom/oplus/ocs/camera/common/util/CameraUnitLog;->v(Ljava/lang/String;Ljava/util/function/Function;Ljava/lang/Object;Z)V
+ 
+     :cond_7
++    # Log once per capture, including the timeout path. p3 is no longer
++    # needed as a CameraRequestTag here; v8 is scratch after the wait loop.
++    new-instance p3, Ljava/lang/StringBuilder;
++
++    const-string v8, "readiness: current="
++
++    invoke-direct {p3, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
++
++    invoke-virtual {p3, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
++
++    const-string v8, ", requested="
++
++    invoke-virtual {p3, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++
++    invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
++
++    const-string v8, ", polls="
++
++    invoke-virtual {p3, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++
++    invoke-virtual {p3, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
++
++    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
++
++    move-result-object p3
++
++    const-string v8, "OplusSensorMode"
++
++    invoke-static {v8, p3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
++
+     if-eq v7, v0, :cond_8
+ 
+     .line 2261
