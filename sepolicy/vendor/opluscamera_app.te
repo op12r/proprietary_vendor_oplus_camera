@@ -62,17 +62,14 @@ binder_use(opluscamera_app)
 binder_call(opluscamera_app, system_server)
 binder_call(opluscamera_app, surfaceflinger)
 
-
-
 allow opluscamera_app activity_service:service_manager find;
 allow opluscamera_app display_service:service_manager find;
 allow opluscamera_app surfaceflinger_service:service_manager find;
 allow opluscamera_app package_native_service:service_manager find;
 allow opluscamera_app permission_service:service_manager find;
-allow opluscamera_app vendor_hal_offlinecamera_service:service_manager find;
+hal_client_domain(opluscamera_app, hal_camera)
 allow opluscamera_app hal_system_suspend_service:service_manager find;
 dontaudit opluscamera_app vendor_hal_qspmhal_service:service_manager find;
-
 
 # Allow binder communication with QSPM HAL
 allow opluscamera_app vendor_hal_qspmhal_default:binder { call transfer };
