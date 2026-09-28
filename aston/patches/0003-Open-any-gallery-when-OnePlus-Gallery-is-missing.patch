@@ -1,0 +1,39 @@
+From: jendermine <jendermine@gmail.com>
+Subject: [PATCH] Open any gallery when OnePlus Gallery is missing
+---
+diff --git a/smali/com/oplus/camera/CameraManager$f.smali b/smali/com/oplus/camera/CameraManager$f.smali
+index d2a52e4..d6a51a5 100644
+--- a/smali/com/oplus/camera/CameraManager$f.smali
++++ b/smali/com/oplus/camera/CameraManager$f.smali
+@@ -1982,6 +1982,31 @@
+ 
+     if-nez v5, :cond_a
+ 
++    new-instance v5, Landroid/content/Intent;
++
++    const-string v6, "com.android.camera.action.REVIEW"
++
++    invoke-direct {v5, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
++
++    iget-object v6, v0, Lvj/h;->c:Landroid/net/Uri;
++
++    iget-object v7, v0, Lvj/h;->d:Ljava/lang/String;
++
++    invoke-virtual {v5, v6, v7}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
++
++    const/4 v6, 0x1
++
++    invoke-virtual {v5, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
++
++    iget-object v6, v13, Lcom/oplus/camera/helper/GalleryHelper;->a:Landroid/app/Activity;
++
++    :try_start_anygallery
++    invoke-virtual {v6, v5}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
++    :try_end_anygallery
++    .catch Ljava/lang/Exception; {:try_start_anygallery .. :try_end_anygallery} :catch_anygallery
++
++    :catch_anygallery
++
+     invoke-static {}, Lcom/oplus/camera/util/h1;->b()Lcom/oplus/camera/util/h1;
+ 
+     move-result-object v5
