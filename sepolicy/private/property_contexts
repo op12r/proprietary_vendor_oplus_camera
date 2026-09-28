@@ -9,3 +9,7 @@ oplus.camera.orms                   u:object_r:exported_system_prop:s0
 
 # Region
 persist.sys.oppo.region             u:object_r:exported_system_prop:s0
+ro.oplus.                           u:object_r:exported_system_prop:s0
+ro.oplus.system.camera.name         u:object_r:exported_system_prop:s0
+ro.oplus.key.actionbutton           u:object_r:exported_system_prop:s0
+ro.oplus.flashlight.rio.switch      u:object_r:exported_system_prop:s0
