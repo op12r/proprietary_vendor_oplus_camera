@@ -67,6 +67,7 @@ allow opluscamera_app display_service:service_manager find;
 allow opluscamera_app surfaceflinger_service:service_manager find;
 allow opluscamera_app package_native_service:service_manager find;
 allow opluscamera_app permission_service:service_manager find;
+typeattribute opluscamera_app halclientdomain;
 typeattribute opluscamera_app hal_camera_client;
 allow opluscamera_app hal_system_suspend_service:service_manager find;
 dontaudit opluscamera_app vendor_hal_qspmhal_service:service_manager find;
