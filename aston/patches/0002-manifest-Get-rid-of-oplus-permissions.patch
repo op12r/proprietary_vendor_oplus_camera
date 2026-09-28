@@ -1,67 +1,67 @@
-From: jendermine <jendermine@gmail.com>
+From: Jen <jendermine@gmail.com>
 Subject: [PATCH] manifest: Get rid of oplus permissions
-
 ---
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 4cd47b3..a77798b 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -241,7 +241,7 @@
+@@ -242,7 +242,7 @@
              <meta-data android:name="com.android.keyguard.layout" android:resource="@layout/start_fake_layout"/>
              <meta-data android:name="com.android.keyguard.layout.none.fold.remap" android:resource="@layout/start_fake_layout_none_fold_remap"/>
          </activity>
--        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenSize|uiMode" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.CameraOplusImageActivity" android:permission="com.oplus.permission.safe.KEY_EVENT" android:relinquishTaskIdentity="true" android:resizeableActivity="false" android:screenOrientation="behind" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
-+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenSize|uiMode" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.CameraOplusImageActivity" android:relinquishTaskIdentity="true" android:resizeableActivity="false" android:screenOrientation="behind" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|uiMode|screenSize" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.CameraOplusImageActivity" android:permission="com.oplus.permission.safe.KEY_EVENT" android:relinquishTaskIdentity="true" android:resizeableActivity="false" android:screenOrientation="behind" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|uiMode|screenSize" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.CameraOplusImageActivity" android:relinquishTaskIdentity="true" android:resizeableActivity="false" android:screenOrientation="behind" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
              <intent-filter>
                  <action android:name="oplus.media.action.STILL_IMAGE_CAMERA"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -250,7 +250,7 @@
+@@ -251,7 +251,7 @@
              <meta-data android:name="com.android.keyguard.layout" android:resource="@layout/start_fake_layout"/>
              <meta-data android:name="com.android.keyguard.layout.none.fold.remap" android:resource="@layout/start_fake_layout_none_fold_remap"/>
          </activity>
--        <activity android:clearTaskOnLaunch="true" android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.OplusCameraActivity" android:permission="com.oplus.permission.safe.KEY_EVENT" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
-+        <activity android:clearTaskOnLaunch="true" android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.OplusCameraActivity" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+-        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.OplusCameraActivity" android:permission="com.oplus.permission.safe.KEY_EVENT" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
++        <activity android:clearTaskOnLaunch="true" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="true" android:label="@string/camera_app_name" android:launchMode="singleTop" android:name="com.oplus.camera.component.OplusCameraActivity" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:visibleToInstantApps="true" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
              <intent-filter>
                  <action android:name="oplus.media.action.STILL_IMAGE_CAMERA_SECURE"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -274,21 +274,21 @@
+@@ -275,21 +275,21 @@
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ApsConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ApsConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ApsConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ApsConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.APS_CONFIG_SET"/>
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.HALConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.HALConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.HALConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.HALConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.HAL_CONFIG_SET"/>
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.algovisualization.autocapture.AutoQuickCaptureSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.algovisualization.autocapture.AutoQuickCaptureSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.algovisualization.autocapture.AutoQuickCaptureSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.algovisualization.autocapture.AutoQuickCaptureSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.AUTO_QUICK_CAPTURE_SET"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -303,32 +303,32 @@
+@@ -304,32 +304,32 @@
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
-         <activity android:configChanges="fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ScreenOffActivity" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.IQConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.IQConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+         <activity android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.ScreenOffActivity" android:resizeableActivity="false" android:screenOrientation="behind" android:showWhenLocked="true" android:taskAffinity="com.oplus.camera" android:theme="@style/ThemeCamera.FullScreen" android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.IQConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.IQConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.IQ_CONFIG_SET"/>
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="true" android:launchMode="singleTop" android:name="com.oplus.camera.feature.keymagic.KeyMagicSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:theme="@style/AppNoTitleTheme.PreferenceFragmentNoAnim">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="true" android:launchMode="singleTop" android:name="com.oplus.camera.feature.keymagic.KeyMagicSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:theme="@style/AppNoTitleTheme.PreferenceFragmentNoAnim">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="true" android:launchMode="singleTop" android:name="com.oplus.camera.feature.keymagic.KeyMagicSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:theme="@style/AppNoTitleTheme.PreferenceFragmentNoAnim">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="true" android:launchMode="singleTop" android:name="com.oplus.camera.feature.keymagic.KeyMagicSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:theme="@style/AppNoTitleTheme.PreferenceFragmentNoAnim">
              <intent-filter>
                  <action android:name="oplus.intent.action.APP_KEY_MAGIC_CHOICE"/>
                  <category android:name="android.intent.category.DEFAULT"/>
@@ -73,20 +73,20 @@ diff --git a/AndroidManifest.xml b/AndroidManifest.xml
                  <action android:name="oplus.intent.action.KEY_MAGIC_MESSENGER"/>
              </intent-filter>
          </service>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.AppConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.AppConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.AppConfigSetActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.AppConfigSetActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.APP_CONFIG_SET"/>
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="true" android:icon="@drawable/ic_camera_setting" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="true" android:icon="@drawable/ic_camera_setting" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="true" android:icon="@drawable/ic_camera_setting" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraSettingActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="true" android:icon="@drawable/ic_camera_setting" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraSettingActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.APP_SETTINGS"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -343,7 +343,7 @@
+@@ -344,7 +344,7 @@
              </intent-filter>
              <meta-data android:name="com.android.settings.APP_PRIORITY" android:value="30010"/>
          </activity>
@@ -95,16 +95,16 @@ diff --git a/AndroidManifest.xml b/AndroidManifest.xml
              <intent-filter>
                  <action android:name="com.oplus.setting.ai.action.SETTING_ENTRANCE"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -356,7 +356,7 @@
+@@ -357,7 +357,7 @@
              <meta-data android:name="com.oplus.setting.ai.PROVIDER" android:value="com.oplus.ai.camera.visibility_attr_provider"/>
              <meta-data android:name="com.oplus.setting.ai.PRIORITY" android:value="1"/>
          </activity>
--        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraDebugActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
-+        <activity android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraDebugActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
+-        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraDebugActivity" android:permission="oplus.permission.OPLUS_COMPONENT_SAFE" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
++        <activity android:configChanges="keyboardHidden|orientation|screenLayout|uiMode|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.oplus.camera.setting.CameraDebugActivity" android:resizeableActivity="true" android:screenOrientation="behind" android:showWhenLocked="true" android:theme="@style/AppNoTitleTheme.PreferenceFragment">
              <intent-filter>
                  <action android:name="oplus.intent.action.APPDebug"/>
                  <category android:name="android.intent.category.DEFAULT"/>
-@@ -374,12 +374,12 @@
+@@ -375,12 +375,12 @@
                  <action android:name="android.intent.action.CAMERA_BUTTON"/>
              </intent-filter>
          </receiver>
@@ -119,7 +119,7 @@ diff --git a/AndroidManifest.xml b/AndroidManifest.xml
              <intent-filter>
                  <action android:name="com.oplus.action.PRE_LOAD_CAMERA"/>
              </intent-filter>
-@@ -410,12 +410,12 @@
+@@ -411,12 +411,12 @@
                  <category android:name="android.intent.category.DEFAULT"/>
              </intent-filter>
          </activity>
@@ -134,7 +134,7 @@ diff --git a/AndroidManifest.xml b/AndroidManifest.xml
              <intent-filter>
                  <action android:name="com.camera.action.START_APS_SERVICE"/>
              </intent-filter>
-@@ -425,34 +425,34 @@
+@@ -426,34 +426,34 @@
                  <action android:name="android.service.quicksettings.action.QS_TILE"/>
              </intent-filter>
          </service>
@@ -178,7 +178,7 @@ diff --git a/AndroidManifest.xml b/AndroidManifest.xml
          <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" android:value="true"/>
          <uses-library android:name="com.oplus.camera.unit.sdk" android:required="false"/>
          <provider android:authorities="com.oplus.camera.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.oplus.scanengine.router.ShareFileProvider">
-@@ -490,7 +490,7 @@
+@@ -491,7 +491,7 @@
          <meta-data android:name="com.oplus.support:api-adapter" android:value="13.0.0"/>
          <meta-data android:name="protocol_version_codes" android:value="142"/>
          <meta-data android:name="com.oplus.appplatform:sysapi" android:value="13.0.4"/>
