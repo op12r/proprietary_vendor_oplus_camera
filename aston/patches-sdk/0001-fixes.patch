@@ -1,0 +1,121 @@
+From 6b517705fa72faca938c5f13eb8e35cfd7e154ae Mon Sep 17 00:00:00 2001
+From: port <port@local>
+Date: Tue, 30 Jun 2026 14:28:20 +0500
+Subject: [PATCH] fixes
+
+---
+ .../oplus/protobuf/ExtensionRegistryLite.smali   |  2 +-
+ .../hdrtransform/HdrTransformPlatform.smali      |  4 ++--
+ smali/com/oplus/ocs/camera/UxThreadPool.smali    |  4 ++--
+ .../common/parameter/apsadapter/ApsHelper.smali  |  2 +-
+ .../common/util/OsenseKeyThreadHelper.smali      |  2 +-
+ .../ocs/camera/consumer/ApsDataConvert.smali     |  2 +-
+ .../ocs/camera/consumer/apsAdapter/ALog.smali    |  6 +++---
+ smali/com/oplus/statistics/util/LogUtil.smali    |  2 +-
+ 8 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/smali/com/google/oplus/protobuf/ExtensionRegistryLite.smali b/smali/com/google/oplus/protobuf/ExtensionRegistryLite.smali
+index 4baa859..17c1396 100644
+--- a/smali/com/google/oplus/protobuf/ExtensionRegistryLite.smali
++++ b/smali/com/google/oplus/protobuf/ExtensionRegistryLite.smali
+@@ -19,7 +19,7 @@
+ 
+ .field private static doFullRuntimeInheritanceCheck:Z = true
+ 
+-.field private static volatile eagerlyParseMessageSets:Z = false
++.field private static volatile eagerlyParseMessageSets:Z
+ 
+ .field private static volatile emptyRegistry:Lcom/google/oplus/protobuf/ExtensionRegistryLite;
+ 
+diff --git a/smali/com/oplus/camera/hdrtransform/HdrTransformPlatform.smali b/smali/com/oplus/camera/hdrtransform/HdrTransformPlatform.smali
+index 99deba9..01e5ef3 100644
+--- a/smali/com/oplus/camera/hdrtransform/HdrTransformPlatform.smali
++++ b/smali/com/oplus/camera/hdrtransform/HdrTransformPlatform.smali
+@@ -8,9 +8,9 @@
+ 
+ .field private static final TAG:Ljava/lang/String; = "HdrTransformPlatform"
+ 
+-.field private static sAlgoExists:Z = false
++.field private static sAlgoExists:Z
+ 
+-.field private static sLibraryLoaded:Z = false
++.field private static sLibraryLoaded:Z
+ 
+ 
+ # direct methods
+diff --git a/smali/com/oplus/ocs/camera/UxThreadPool.smali b/smali/com/oplus/ocs/camera/UxThreadPool.smali
+index c86e6bf..2f5fc6d 100644
+--- a/smali/com/oplus/ocs/camera/UxThreadPool.smali
++++ b/smali/com/oplus/ocs/camera/UxThreadPool.smali
+@@ -31,7 +31,7 @@
+ 
+ .field private static final UX_THREAD_LOCK:Ljava/lang/Object;
+ 
+-.field private static sThreadUxMap:Landroid/util/SparseArray; = null
++.field private static sThreadUxMap:Landroid/util/SparseArray;
+     .annotation system Ldalvik/annotation/Signature;
+         value = {
+             "Landroid/util/SparseArray<",
+@@ -52,7 +52,7 @@
+     .end annotation
+ .end field
+ 
+-.field private static sbHasSetUx:Z = false
++.field private static sbHasSetUx:Z
+ 
+ 
+ # instance fields
+diff --git a/smali/com/oplus/ocs/camera/common/parameter/apsadapter/ApsHelper.smali b/smali/com/oplus/ocs/camera/common/parameter/apsadapter/ApsHelper.smali
+index 2c12a69..81757ae 100644
+--- a/smali/com/oplus/ocs/camera/common/parameter/apsadapter/ApsHelper.smali
++++ b/smali/com/oplus/ocs/camera/common/parameter/apsadapter/ApsHelper.smali
+@@ -10,7 +10,7 @@
+ 
+ .field private static TAG:Ljava/lang/String; = "ApsHelper"
+ 
+-.field private static bInit:Z = false
++.field private static bInit:Z
+ 
+ .field private static mClazzField:Ljava/lang/reflect/Field;
+ 
+diff --git a/smali/com/oplus/ocs/camera/common/util/OsenseKeyThreadHelper.smali b/smali/com/oplus/ocs/camera/common/util/OsenseKeyThreadHelper.smali
+index d4ab463..81d3332 100644
+--- a/smali/com/oplus/ocs/camera/common/util/OsenseKeyThreadHelper.smali
++++ b/smali/com/oplus/ocs/camera/common/util/OsenseKeyThreadHelper.smali
+@@ -12,7 +12,7 @@
+ 
+ .field private static final sOsenseEventLock:Ljava/lang/Object;
+ 
+-.field private static sOsenseInit:Z = false
++.field private static sOsenseInit:Z
+ 
+ .field private static sOsenseResClient:Lcom/oplus/osense/OsenseResClient;
+ 
+diff --git a/smali/com/oplus/ocs/camera/consumer/ApsDataConvert.smali b/smali/com/oplus/ocs/camera/consumer/ApsDataConvert.smali
+index 31b9dbb..9b4dc39 100644
+--- a/smali/com/oplus/ocs/camera/consumer/ApsDataConvert.smali
++++ b/smali/com/oplus/ocs/camera/consumer/ApsDataConvert.smali
+@@ -84,7 +84,7 @@
+ 
+ .field private static final TAG:Ljava/lang/String; = "ApsDataConvert"
+ 
+-.field private static sbUnderWaterVideoStatus:Z = false
++.field private static sbUnderWaterVideoStatus:Z
+ 
+ 
+ # direct methods
+diff --git a/smali/com/oplus/statistics/util/LogUtil.smali b/smali/com/oplus/statistics/util/LogUtil.smali
+index ed3d2f2..4f675aa 100644
+--- a/smali/com/oplus/statistics/util/LogUtil.smali
++++ b/smali/com/oplus/statistics/util/LogUtil.smali
+@@ -6,7 +6,7 @@
+ # static fields
+ .field public static final TAG_PREFIX:Ljava/lang/String; = "OplusTrack-"
+ 
+-.field private static isDebug:Z = false
++.field private static isDebug:Z
+ 
+ 
+ # direct methods
+-- 
+2.54.0

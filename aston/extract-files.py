@@ -1,0 +1,113 @@
+#!/usr/bin/env -S PYTHONPATH=../../../../tools/extract-utils python3
+#
+# SPDX-FileCopyrightText: 2016 The CyanogenMod Project
+# SPDX-FileCopyrightText: 2017-2024 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+from extract_utils.fixups_lib import (
+    lib_fixups,
+    lib_fixups_user_type,
+)
+from extract_utils.fixups_blob import (
+    blob_fixup,
+    blob_fixups_user_type,
+)
+from extract_utils.main import (
+    ExtractUtils,
+    ExtractUtilsModule,
+)
+from native_winbuff_fixup import patch_native_win_buff_exchange_file
+
+def lib_fixup_system_ext_suffix(lib: str, partition: str, *args, **kwargs):
+    if partition != 'system_ext':
+        return None
+
+    system_ext_libs = {
+        'libSuperTextWrapper',
+        'libXDocProcessSDK',
+        'libYTCommon',
+        'libmpbase',
+        'libextendfile',
+    }
+
+    return f'{lib}_system_ext' if lib in system_ext_libs else None
+
+lib_fixups: lib_fixups_user_type = {
+    **lib_fixups,
+    (
+        'libSuperTextWrapper',
+        'libXDocProcessSDK',
+        'libYTCommon',
+        'libmpbase',
+        'libextendfile',
+    ): lib_fixup_system_ext_suffix,
+}
+
+def blob_fixup_native_winbuff_exchange(ctx, file, file_path, *args, **kwargs):
+    patch_native_win_buff_exchange_file(file_path)
+
+blob_fixups = {
+    'system_ext/lib64/libAPSClient-cmd-jni.so': blob_fixup()
+        .binary_regex_replace(b'libHeifEncoderWrapper\\.so', b'xibHeifEncoderWrapper.so')
+        .binary_regex_replace(b'libNativeWinBuffExchange\\.so', b'xibNativeWinBuffExchange.so'),
+    'system_ext/lib64/libNativeWinBuffExchange.so': blob_fixup()
+        .call(blob_fixup_native_winbuff_exchange),
+    'system_ext/lib64/libAPSClient-cmd-jni-extension.oplus.so': blob_fixup()
+        .binary_regex_replace(b'libHeifEncoderWrapper\\.so', b'xibHeifEncoderWrapper.so')
+        .binary_regex_replace(b'libNativeWinBuffExchange\\.so', b'xibNativeWinBuffExchange.so'),
+    'system_ext/lib64/libcsextimpl.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.camera.provider-V3-ndk.so',
+            'android.hardware.camera.provider-V4-ndk.so',)
+        .replace_needed(
+            'android.hardware.camera.device-V3-ndk.so',
+            'android.hardware.camera.device-V4-ndk.so',)
+        .replace_needed('libbase.so', 'libbase-stock.so'),
+    'system_ext/priv-app/OplusCamera/OplusCamera.apk': blob_fixup()
+        .apktool_patch('patches'),
+    'system_ext/framework/com.oplus.camera.unit.sdk.jar': blob_fixup()
+        .apktool_patch('patches-sdk'),
+    'system_ext/priv-app/OppoGallery2/OppoGallery2.apk': blob_fixup()
+        .apktool_patch('patches-gallery'),
+    'odm/etc/init/init.camera_process.rc': blob_fixup()
+        .regex_replace(
+            '''on post-fs-data
+    mkdir /data/vendor/camera_process 0777 camera camera
+    mkdir /data/vendor/camera_process/livephoto 0777 camera camera
+    mkdir /data/vendor/cam_alog 0777 camera camera
+on property:sys.camera.user.removed=*
+    #delete_recursion /data/vendor/camera_process/${sys.camera.user.removed}
+''',
+            '''on post-fs-data
+    mkdir /data/vendor/camera_process 0777 camera camera
+    mkdir /data/vendor/camera_process/livephoto 0777 camera camera
+    mkdir /data/vendor/cam_alog 0777 camera camera
+    mkdir /data/system/camera_rus 0777 cameraserver cameraserver
+    mkdir /data/vendor/camera_rus 0777 camera camera
+on property:sys.camera.user.removed=*
+    #delete_recursion /data/vendor/camera_process/${sys.camera.user.removed}
+''',
+        )
+}
+
+namespace_imports = [
+    'vendor/oplus/camera/aston/blobs',
+    'vendor/oneplus/oneplus12r',
+    'hardware/oplus',
+    'vendor/qcom/common/system/audio',
+    'vendor/qcom/common/system/perf',
+]
+
+module = ExtractUtilsModule(
+    'blobs',
+    'oplus/camera/aston',
+    device_rel_path='vendor/oplus/camera/aston',
+    blob_fixups=blob_fixups,
+    lib_fixups=lib_fixups,
+    namespace_imports=namespace_imports,
+)
+
+if __name__ == '__main__':
+    utils = ExtractUtils.device(module)
+    utils.run()

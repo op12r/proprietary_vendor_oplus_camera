@@ -1,0 +1,12 @@
+From: jendermine <jendermine@gmail.com>
+Subject: [PATCH] facebeauty: Probe the preview JNI in system_ext
+
+---
+diff --git a/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali b/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
+--- a/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
++++ b/smali/com/oplus/camera/facebeauty/OplusFaceBeautyPreview.smali
+@@ -18,3 +18,3 @@
+ 
+-    const-string v3, "/product/lib64/libApsFaceBeautyPreviewProductJni.so"
++    const-string v3, "/system_ext/lib64/libApsFaceBeautyPreviewProductJni.so"
+ 
