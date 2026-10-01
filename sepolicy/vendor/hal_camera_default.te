@@ -18,3 +18,5 @@ allow hal_camera_default opluscamera_app:binder { call transfer };
 dontaudit hal_camera_default system_prop:file r_file_perms;
 
 allow hal_camera_default vendor_proc_oplus_scheduler:dir search;
+# SoC ID property
+get_prop(hal_camera_default, vendor_soc_id_prop)

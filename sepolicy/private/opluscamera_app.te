@@ -53,7 +53,6 @@ allow opluscamera_app radio_service:service_manager find;
 allow opluscamera_app vr_manager_service:service_manager find;
 allow opluscamera_app nfc_service:service_manager find;
 
-
 #  system_server UDP socket (same as platform_app)
 allow opluscamera_app system_server:udp_socket {
     getattr read recvfrom write getopt setopt };
@@ -64,3 +63,6 @@ dontaudit opluscamera_app debugfs_tracing:file rw_file_perms;
 # OplusShoulderPressureManagerService falls back to default_android_service
 # because it has no label. Cannot allow (neverallow blocks it), so suppress.
 dontaudit opluscamera_app default_android_service:service_manager find;
+
+# cameraserver sets scheduling policy of camera binder/capture threads.
+allow cameraserver opluscamera_app:process setsched;
