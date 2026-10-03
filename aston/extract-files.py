@@ -8,8 +8,11 @@
 import os
 import re
 import shutil
+import sys
 import tempfile
+import zipfile
 from pathlib import Path
+from typing import List, NamedTuple, Tuple
 
 from extract_utils.fixups_lib import (
     lib_fixups,
@@ -23,6 +26,7 @@ from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
 )
+from extract_utils.utils import Color, color_print, run_cmd
 from native_winbuff_fixup import patch_native_win_buff_exchange_file
 
 def lib_fixup_system_ext_suffix(lib: str, partition: str, *args, **kwargs):
@@ -129,6 +133,210 @@ def blob_fixup_opluscamera_privapp_linker_ns(
     else:
         print('OplusCamera: priv-app linker ns fixup already applied')
 
+# =====================================================================
+# Post-patch verification
+#
+# A rejected hunk already raises: patch_dir runs `git apply`, and run_cmd
+# turns a non-zero exit into ValueError. What nothing catches is the silent
+# case: a .call() fixup whose anchor drifted finds nothing, returns, and the
+# blob ships unpatched while the extract reports success. So every patch
+# below asserts a marker in the decoded tree just before it is packed.
+# Failures are collected, not raised, so one run reports every broken patch.
+#
+# Adding a patch means adding its marker here. Pick something the patch
+# itself introduces (a label, an injected const-string, a new class), not
+# something that merely sits near it. Every marker below is taken from a
+# line our aston patches add or remove.
+# =====================================================================
+
+VERIFY_RESULTS: List[Tuple[str, str, bool]] = []
+
+class Check(NamedTuple):
+    what: str
+    needle: str
+    # Basename glob (searched recursively) or a concrete path under tmp_dir.
+    where: str = '*.smali'
+    present: bool = True
+
+def _check_hit(root: Path, chk: Check) -> bool:
+    # Concrete path: read it. Covers binary AXML too (--no-res extracts leave
+    # AndroidManifest.xml packed), hence the utf-16 fallback for its string pool.
+    if '*' not in chk.where and '?' not in chk.where:
+        target = root / chk.where
+        if not target.is_file():
+            return False
+        raw = target.read_bytes()
+        return (
+            chk.needle.encode() in raw or chk.needle.encode('utf-16-le') in raw
+        )
+
+    try:
+        out = run_cmd([
+            'grep',
+            '-rlaF',
+            '--include',
+            chk.where,
+            '-e',
+            chk.needle,
+            str(root),
+        ])
+    except ValueError:
+        return False  # grep exits 1 when nothing matches
+
+    return bool(out.strip())
+
+def verify(label: str, *checks: Check):
+    def impl(ctx, file, file_path, *args, tmp_dir=None, **kwargs):
+        if tmp_dir is None:
+            return
+        root = Path(tmp_dir)
+        for chk in checks:
+            ok = _check_hit(root, chk) == chk.present
+            # A missing file can't prove a removal: without this, an absence
+            # check on AndroidManifest.xml passes when the manifest was never
+            # decoded at all.
+            concrete = '*' not in chk.where and '?' not in chk.where
+            if not chk.present and concrete and not (root / chk.where).is_file():
+                ok = False
+            VERIFY_RESULTS.append((label, chk.what, ok))
+
+    return impl
+
+OPLUSCAMERA_CHECKS = (
+    # patches/0001: OPlus fonts swapped for the system default typeface.
+    Check(
+        '0001 default font',
+        'Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;',
+        'smali/d6/t3.smali',
+    ),
+    # patches/0002: the oplus-only android:permission attributes are removed.
+    Check(
+        '0002 oplus perms stripped',
+        'android:permission="oplus.permission.OPLUS_COMPONENT_SAFE"',
+        'AndroidManifest.xml',
+        False,
+    ),
+    # patches/0003: the AnyGallery helper class it adds.
+    Check('0003 any gallery', 'Lco/aospa/camera/AnyGallery;'),
+    # blob_fixup_opluscamera_privapp_linker_ns
+    Check(
+        'linker-ns extractNativeLibs=false',
+        'android:extractNativeLibs="false"',
+        'AndroidManifest.xml',
+    ),
+    Check(
+        'linker-ns CONTROL_KEYGUARD dropped',
+        'android.permission.CONTROL_KEYGUARD',
+        'AndroidManifest.xml',
+        False,
+    ),
+)
+
+SDK_CHECKS = (
+    # patches-sdk/0001: library load guard field in ApsHelper and friends.
+    Check('0001 fixes', '.field private static sLibraryLoaded:Z'),
+    # patches-sdk/0002: facebeauty probes the system_ext lib path.
+    Check(
+        '0002 facebeauty probe path',
+        '/system_ext/lib64/libApsFaceBeautyPreviewProductJni.so',
+    ),
+    # patches-sdk/0003: video_120fps skipped in isFeatureConfigLegal. The
+    # string itself exists in the stock class, so match the comment the
+    # patch adds instead.
+    Check(
+        '0003 120fps unlock',
+        '# The 12R camera HAL exposes 1080p and 4K constrained high speed at',
+        'smali/com/oplus/ocs/camera/producer/decision/OperationModeDecision.smali',
+    ),
+)
+
+GALLERY_CHECKS = (
+    # patches-gallery/0001: oppo-only android:permission attributes removed.
+    Check(
+        '0001 oppo perms stripped',
+        'android:permission="oppo.permission.OPPO_COMPONENT_SAFE"',
+        'AndroidManifest.xml',
+        False,
+    ),
+    # patches-gallery/0002: RECEIVER_NOT_EXPORTED injection label.
+    Check('0002 RECEIVER_NOT_EXPORTED', ':cond_no_or'),
+    # patches-gallery/0003: PhotoEditor theme items.
+    Check(
+        '0003 PhotoEditor theme items',
+        'de_toolkit_stroke_size_tint',
+        'res/values/styles.xml',
+    ),
+    # patches-gallery/0004: live photo key handling.
+    Check(
+        '0004 live photos',
+        '# Save original key (p0) into v3 before it gets overwritten',
+        'smali/com/oplus/aiunit/vision/f4a.smali',
+    ),
+)
+
+# Repacked archives, checked after the extract as shipped in the blob repo.
+# OppoGallery2 is left out: aston/proprietary-files.txt doesn't list it (we
+# ship no OPlus gallery), so its fixup and GALLERY_CHECKS only run if it is
+# ever added back.
+PATCHED_BLOBS = (
+    'system_ext/priv-app/OplusCamera/OplusCamera.apk',
+    'system_ext/framework/com.oplus.camera.unit.sdk.jar',
+)
+
+def verify_packed_artifacts():
+    # The in-tree checks run on the decoded tree, so they still pass if
+    # apktool_pack then writes a truncated archive, or if a later re-extract
+    # overwrites the patched blob with the stock one. Read the central
+    # directory of what actually landed in the blob repo.
+    out = Path(__file__).resolve().parent / 'blobs' / 'proprietary'
+    for rel in PATCHED_BLOBS:
+        name = Path(rel).name
+        target = out / rel
+        if not target.is_file():
+            VERIFY_RESULTS.append((name, 'present in blob repo', False))
+            continue
+        try:
+            with zipfile.ZipFile(target) as z:
+                names = z.namelist()
+        except (zipfile.BadZipFile, OSError):
+            VERIFY_RESULTS.append((name, 'repacked archive readable', False))
+            continue
+        VERIFY_RESULTS.append((name, 'repacked archive readable', True))
+        VERIFY_RESULTS.append((
+            name,
+            'contains dex',
+            any(n.endswith('.dex') for n in names),
+        ))
+
+def report_verification() -> bool:
+    if not VERIFY_RESULTS:
+        color_print('\nno patch verification ran', color=Color.RED)
+        return False
+
+    width = max(len(f'{label}: {what}') for label, what, _ in VERIFY_RESULTS)
+    failed = [r for r in VERIFY_RESULTS if not r[2]]
+
+    print('\n=== patch verification ===')
+    for label, what, ok in VERIFY_RESULTS:
+        color_print(
+            f'{label}: {what}'.ljust(width) + ('   OK' if ok else '   FAILED'),
+            color=Color.GREEN if ok else Color.RED,
+        )
+
+    if failed:
+        color_print(
+            f'\n{len(failed)} of {len(VERIFY_RESULTS)} checks FAILED, the blobs '
+            'above shipped without the change they are supposed to carry. Re-derive '
+            'the anchor against this dump before building.',
+            color=Color.RED,
+        )
+        return False
+
+    color_print(
+        f'\nall {len(VERIFY_RESULTS)} checks passed', color=Color.GREEN
+    )
+    return True
+
 blob_fixups = {
     'system_ext/lib64/libAPSClient-cmd-jni.so': blob_fixup()
         .binary_regex_replace(b'libHeifEncoderWrapper\\.so', b'xibHeifEncoderWrapper.so')
@@ -152,12 +360,23 @@ blob_fixups = {
         .apktool_unpack('patches')
         .patch_dir('patches')
         .call(blob_fixup_opluscamera_privapp_linker_ns)
+        .call(verify('OplusCamera', *OPLUSCAMERA_CHECKS))
         .apktool_pack()
         .stripzip(),
+    # apktool_patch() expanded so the patches can be verified before packing.
     'system_ext/framework/com.oplus.camera.unit.sdk.jar': blob_fixup()
-        .apktool_patch('patches-sdk'),
+        .apktool_unpack('patches-sdk')
+        .patch_dir('patches-sdk')
+        .call(verify('sdk.jar', *SDK_CHECKS))
+        .apktool_pack()
+        .stripzip(),
+    # apktool_patch() expanded so the patches can be verified before packing.
     'system_ext/priv-app/OppoGallery2/OppoGallery2.apk': blob_fixup()
-        .apktool_patch('patches-gallery'),
+        .apktool_unpack('patches-gallery')
+        .patch_dir('patches-gallery')
+        .call(verify('OppoGallery2', *GALLERY_CHECKS))
+        .apktool_pack()
+        .stripzip(),
     'odm/etc/init/init.camera_process.rc': blob_fixup()
         .regex_replace(
             '''on post-fs-data
@@ -259,3 +478,7 @@ if __name__ == '__main__':
 
     utils = ExtractUtils.device(module)
     utils.run()
+
+    verify_packed_artifacts()
+    if not report_verification():
+        sys.exit(1)
