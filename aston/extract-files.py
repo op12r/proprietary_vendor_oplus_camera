@@ -223,6 +223,14 @@ OPLUSCAMERA_CHECKS = (
     Check('0004 120fps recorder rate', ':cond_fps_not_high'),
     Check('0004 120fps fps helper', ':cond_fps120_ok'),
     Check('0005 120fps features reported', ':goto_aston_120fps_done'),
+    Check(
+        '0006 8K feature reported',
+        '"com.oplus.feature.video.8k.support"',
+        'smali/com/oplus/camera/configure/CameraConfig.smali',
+    ),
+    Check('0006 8K session at 24fps', ':cond_aston_8k_fps_done'),
+    Check('0006 8K recorder fps', ':cond_aston_8k_p3_done'),
+    Check('0006 8K capture rate', ':cond_aston_8k_hg_done'),
     # blob_fixup_opluscamera_privapp_linker_ns
     Check(
         'linker-ns extractNativeLibs=false',

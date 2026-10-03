@@ -1,0 +1,129 @@
+From 641f1f9acff660f5f1331137920b640056b4780e Mon Sep 17 00:00:00 2001
+From: jendermine <jendermine@gmail.com>
+Date: Sat, 3 Oct 2026 13:50:44 +0000
+Subject: [PATCH] Enable 8K recording at 24fps
+
+The 12R HAL has an 8K video pipeline on the main camera (vendor mode
+0x80A9, "#Main 8K video" in CameraHWConfiguration.config) limited to
+24fps by its LimitFPSRange entry. Report the 8K and 8K 24fps video
+features so the size shows up, and make an 8K session and recorder ask
+for 24fps: the fps preference outlives a size change, so a leftover
+120fps pick otherwise opens the 4K120 session and has MediaRecorder
+reject 8K at 120fps.
+---
+ .../oplus/camera/configure/CameraConfig.smali | 19 ++++++++
+ .../com/oplus/camera/module/a.smali           | 45 +++++++++++++++++++
+ smali_classes28/h8/i.smali                    | 17 +++++++
+ 3 files changed, 81 insertions(+)
+
+diff --git a/smali/com/oplus/camera/configure/CameraConfig.smali b/smali/com/oplus/camera/configure/CameraConfig.smali
+index e8897f1..9ccbf29 100644
+--- a/smali/com/oplus/camera/configure/CameraConfig.smali
++++ b/smali/com/oplus/camera/configure/CameraConfig.smali
+@@ -1423,6 +1423,22 @@
+ 
+     if-nez v0, :cond_aston_120fps_on
+ 
++    const-string v0, "com.oplus.feature.video.8k.support"
++
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-nez v0, :cond_aston_120fps_on
++
++    const-string v0, "com.oplus.feature.video.8k.24fps.support"
++
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-nez v0, :cond_aston_120fps_on
++
+     goto :goto_aston_120fps_done
+ 
+     :cond_aston_120fps_on
+diff --git a/smali_classes12/com/oplus/camera/module/a.smali b/smali_classes12/com/oplus/camera/module/a.smali
+index 90bd005..9204a05 100644
+--- a/smali_classes12/com/oplus/camera/module/a.smali
++++ b/smali_classes12/com/oplus/camera/module/a.smali
+@@ -2404,6 +2404,28 @@
+ .method public final Hg()Ljava/lang/Double;
+     .locals 2
+ 
++    invoke-virtual {p0}, Lcom/oplus/camera/module/BaseMode;->m9()Ljava/lang/String;
++
++    move-result-object v0
++
++    const-string v1, "video_size_8k"
++
++    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-eqz v0, :cond_aston_8k_hg_done
++
++    const-wide/high16 v0, 0x4038000000000000L    # 24.0
++
++    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
++
++    move-result-object p0
++
++    return-object p0
++
++    :cond_aston_8k_hg_done
++
+     .line 1
+     invoke-virtual {p0}, Lcom/oplus/camera/module/a;->E()Z
+ 
+@@ -6556,6 +6578,24 @@
+ .method public final P3()I
+     .locals 2
+ 
++    invoke-virtual {p0}, Lcom/oplus/camera/module/BaseMode;->m9()Ljava/lang/String;
++
++    move-result-object v0
++
++    const-string v1, "video_size_8k"
++
++    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-eqz v0, :cond_aston_8k_p3_done
++
++    const/16 v0, 0x18
++
++    return v0
++
++    :cond_aston_8k_p3_done
++
+     .line 1
+     const-string v0, "pref_screen_mode_fixed_video_frame_key"
+ 
+diff --git a/smali_classes28/h8/i.smali b/smali_classes28/h8/i.smali
+index 83021aa..f996bf9 100644
+--- a/smali_classes28/h8/i.smali
++++ b/smali_classes28/h8/i.smali
+@@ -1722,6 +1722,21 @@
+ 
+     move-result v2
+ 
++    invoke-virtual {p0}, Lh8/i;->m2()Ljava/lang/String;
++
++    move-result-object v3
++
++    const-string v4, "video_size_8k"
++
++    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v3
++
++    if-eqz v3, :cond_aston_8k_fps_done
++
++    move v2, v7
++
++    :cond_aston_8k_fps_done
+     const-string v3, "video_30fps"
+ 
+     const-string v4, "video_size_4kuhd"
