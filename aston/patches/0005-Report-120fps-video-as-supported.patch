@@ -1,0 +1,52 @@
+From 4e44c390925961dcdf762063d9148d2f90a9b455 Mon Sep 17 00:00:00 2001
+From: jendermine <jendermine@gmail.com>
+Date: Sat, 3 Oct 2026 12:30:38 +0000
+Subject: [PATCH] Report 120fps video as supported
+
+---
+ .../oplus/camera/configure/CameraConfig.smali | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/smali/com/oplus/camera/configure/CameraConfig.smali b/smali/com/oplus/camera/configure/CameraConfig.smali
+index 8f40c4f..e8897f1 100644
+--- a/smali/com/oplus/camera/configure/CameraConfig.smali
++++ b/smali/com/oplus/camera/configure/CameraConfig.smali
+@@ -1395,6 +1395,38 @@
+ .method public static getConfigBooleanValue(Ljava/lang/String;)Z
+     .locals 5
+ 
++    const-string v0, "com.oplus.feature.video.4k.120fps.support"
++
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-nez v0, :cond_aston_120fps_on
++
++    const-string v0, "com.oplus.feature.video.1080p.120fps.support"
++
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-nez v0, :cond_aston_120fps_on
++
++    const-string v0, "com.oplus.feature.video.120fps.camera.main.only.support"
++
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++
++    move-result v0
++
++    if-nez v0, :cond_aston_120fps_on
++
++    goto :goto_aston_120fps_done
++
++    :cond_aston_120fps_on
++    const/4 v0, 0x1
++
++    return v0
++
++    :goto_aston_120fps_done
+     .line 1
+     sget-object v0, Lcom/oplus/camera/configure/CameraConfig;->d:Ljava/util/concurrent/ConcurrentHashMap;
+ 

@@ -222,6 +222,7 @@ OPLUSCAMERA_CHECKS = (
     Check('0004 120fps high speed session', ':cond_fps120_passthru'),
     Check('0004 120fps recorder rate', ':cond_fps_not_high'),
     Check('0004 120fps fps helper', ':cond_fps120_ok'),
+    Check('0005 120fps features reported', ':goto_aston_120fps_done'),
     # blob_fixup_opluscamera_privapp_linker_ns
     Check(
         'linker-ns extractNativeLibs=false',
