@@ -1,0 +1,79 @@
+From c5e21069a69cea23def81b357325a6501ff3cf43 Mon Sep 17 00:00:00 2001
+From: Oscar M <osm1019@gmail.com>
+Date: Sun, 9 Aug 2026 12:00:00 -0700
+Subject: [PATCH] Enable real-time 1080p/4K 120fps
+
+---
+ smali_classes12/com/oplus/camera/module/a.smali | 16 ++++++++++++++++
+ smali_classes12/jh/t0.smali                     |  9 +++++++++
+ smali_classes28/h8/c.smali                      |  6 ++++++
+ 3 files changed, 31 insertions(+)
+
+diff --git a/smali_classes12/com/oplus/camera/module/a.smali b/smali_classes12/com/oplus/camera/module/a.smali
+index 633c5d2..90bd005 100644
+--- a/smali_classes12/com/oplus/camera/module/a.smali
++++ b/smali_classes12/com/oplus/camera/module/a.smali
+@@ -26908,6 +26908,22 @@
+ .method public o8()I
+     .locals 6
+ 
++    # 120fps recording has to run as an Android constrained high speed
++    # session (operation mode 1): the 12R HAL lists 1080p and 4K at 120fps
++    # only as high speed configurations.
++    invoke-virtual {p0}, Lcom/oplus/camera/module/a;->Oh()I
++
++    move-result v0
++
++    const/16 v1, 0x78
++
++    if-ne v0, v1, :cond_fps120_passthru
++
++    const/4 v0, 0x1
++
++    return v0
++
++    :cond_fps120_passthru
+     .line 1
+     invoke-virtual {p0}, Lcom/oplus/camera/module/BaseMode;->isFrontCamera()Z
+ 
+diff --git a/smali_classes12/jh/t0.smali b/smali_classes12/jh/t0.smali
+index df02b03..e1f98ed 100644
+--- a/smali_classes12/jh/t0.smali
++++ b/smali_classes12/jh/t0.smali
+@@ -1206,6 +1206,15 @@
+     .line 32
+     iget v1, p1, Landroid/media/CamcorderProfile;->videoFrameRate:I
+ 
++    # A profile above 60fps only comes from the 120fps mode; record at the
++    # 120fps capture rate instead of the profile's stock value.
++    const/16 v2, 0x3c
++
++    if-le v1, v2, :cond_fps_not_high
++
++    const/16 v1, 0x78
++
++    :cond_fps_not_high
+     .line 33
+     .line 34
+     invoke-virtual {v0, v1}, Landroid/media/MediaRecorder;->setVideoFrameRate(I)V
+diff --git a/smali_classes28/h8/c.smali b/smali_classes28/h8/c.smali
+index a1998ab..73e8fcd 100644
+--- a/smali_classes28/h8/c.smali
++++ b/smali_classes28/h8/c.smali
+@@ -1599,10 +1599,16 @@
+     move-result p0
+ 
+     .line 92
++    # Accept 120fps as well as 60fps for the high frame rate sizes.
++    if-eq p1, p0, :cond_fps120_ok
++
++    const/16 p1, 0x78
++
+     if-ne p1, p0, :cond_5
+ 
+     .line 93
+     .line 94
++    :cond_fps120_ok
+     const/4 p0, 0x1
+ 
+     .line 95

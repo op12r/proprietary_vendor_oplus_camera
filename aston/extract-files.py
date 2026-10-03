@@ -218,6 +218,10 @@ OPLUSCAMERA_CHECKS = (
     ),
     # patches/0003: the AnyGallery helper class it adds.
     Check('0003 any gallery', 'Lco/aospa/camera/AnyGallery;'),
+    # patches/0004: the labels it adds in module/a, jh/t0 and h8/c.
+    Check('0004 120fps high speed session', ':cond_fps120_passthru'),
+    Check('0004 120fps recorder rate', ':cond_fps_not_high'),
+    Check('0004 120fps fps helper', ':cond_fps120_ok'),
     # blob_fixup_opluscamera_privapp_linker_ns
     Check(
         'linker-ns extractNativeLibs=false',
