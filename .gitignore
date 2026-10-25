@@ -1,1 +1,5 @@
 */blobs/*
+# aston ships its generated blobs, except the patched OplusCamera.apk:
+# it is over GitHub's 100 MB file limit, see aston/README-blobs.md
+!aston/blobs/
+aston/blobs/proprietary/system_ext/priv-app/OplusCamera/OplusCamera.apk

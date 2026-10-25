@@ -1,0 +1,1704 @@
+//
+// Automatically generated file. DO NOT MODIFY
+//
+
+soong_namespace {
+    imports: [
+        "vendor/oplus/camera/aston/blobs",
+        "vendor/oneplus/oneplus12r",
+        "hardware/oplus",
+        "vendor/qcom/common/system/audio",
+        "vendor/qcom/common/system/perf",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.oplus.hardware.cameraextension@1.0",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system/lib64/vendor.oplus.hardware.cameraextension@1.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAPSClient-alog-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAPSClient-alog-jni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libnativewindow",
+                "libjnigraphics",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAPSClient-cmd-jni-extension.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAPSClient-cmd-jni-extension.oplus.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libnativewindow",
+                "libjnigraphics",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAPSClient-cmd-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAPSClient-cmd-jni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libnativewindow",
+                "libjnigraphics",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAPSClient-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAPSClient-jni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libnativewindow",
+                "libjnigraphics",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncFilter_jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncFilter_jni.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncHumBokeh-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncHumBokeh-jni.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncHumanDoubleExposure-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncHumanDoubleExposure-jni.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libEGL",
+                "libGLESv3",
+                "libandroid",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncHumanRetain-jni_v2",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncHumanRetain-jni_v2.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libEGL",
+                "libGLESv3",
+                "libandroid",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncHumanSegFigureFusion-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncHumanSegFigureFusion-jni.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libEGL",
+                "libGLESv3",
+                "libandroid",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAncHumanVideo-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAncHumanVideo-jni.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libApsFaceBeautyPreviewProductJni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libApsFaceBeautyPreviewProductJni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libjnigraphics",
+                "libEGL",
+                "libGLESv1_CM",
+                "libGLESv3",
+                "libz",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libApsSuperEISPreviewJni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libApsSuperEISPreviewJni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libjnigraphics",
+                "libEGL",
+                "libGLESv1_CM",
+                "libGLESv3",
+                "libz",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAvatarEngineRender",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAvatarEngineRender.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libdl",
+                "libandroid",
+                "libz",
+                "libGLESv3",
+                "libEGL",
+                "libstdc++",
+                "libm",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libAvatarEngineRenderNative",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libAvatarEngineRenderNative.so",
+            ],
+            shared_libs: [
+                "libAvatarEngineRender",
+                "liblog",
+                "libdl",
+                "libandroid",
+                "libz",
+                "libGLESv3",
+                "libEGL",
+                "libstdc++",
+                "libm",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libCombineLut",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libCombineLut.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libCombineLutJni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libCombineLutJni.so",
+            ],
+            shared_libs: [
+                "libCombineLut",
+                "liblog",
+                "libandroid",
+                "libjnigraphics",
+                "libEGL",
+                "libGLESv1_CM",
+                "libGLESv3",
+                "libz",
+                "libc",
+                "libm",
+                "libstdc++",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libFileExtender-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libFileExtender-jni.so",
+            ],
+            shared_libs: [
+                "libextendfile_system_ext",
+                "liblog",
+                "libandroid",
+                "libEGL",
+                "libGLESv3",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libHdrTransform-platform-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libHdrTransform-platform-jni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libnativewindow",
+                "libjnigraphics",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libHeifEncoderWrapper",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libHeifEncoderWrapper.so",
+            ],
+            shared_libs: [
+                "liboplusheifwriter",
+                "libutils",
+                "libstagefright",
+                "libstagefright_foundation",
+                "liblog",
+                "libmedia_omx",
+                "libmedia",
+                "libmedia_codeclist",
+                "libnativehelper",
+                "libandroid_runtime",
+                "libnativewindow",
+                "libui",
+                "libgui",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libHeifWinBufExchg-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libHeifWinBufExchg-jni.so",
+            ],
+            shared_libs: [
+                "libHeifEncoderWrapper",
+                "libNativeWinBuffExchange",
+                "liblog",
+                "libandroid",
+                "libjnigraphics",
+                "libGLESv2",
+                "libEGL",
+                "libnativewindow",
+                "libz",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libMsEffectSdk",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libMsEffectSdk.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "libandroid",
+                "libjnigraphics",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libNativeWinBuffExchange",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libNativeWinBuffExchange.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libutils",
+                "libnativewindow",
+                "libui",
+                "libgui",
+                "android.hardware.graphics.bufferqueue@1.0",
+                "android.hardware.graphics.bufferqueue@2.0",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libOplusBlurPreviewJNI",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libOplusBlurPreviewJNI.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libOplusStringJNI-extension.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libOplusStringJNI-extension.oplus.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libc",
+                "libm",
+                "libstdc++",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libOplusStringJNI",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libOplusStringJNI.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libandroid",
+                "libc",
+                "libm",
+                "libstdc++",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libSuperTextWrapper_system_ext",
+    stem: "libSuperTextWrapper",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libSuperTextWrapper.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libXDocProcessSDK_system_ext",
+                "libYTCommon_system_ext",
+                "libGLESv3",
+                "libEGL",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libXDocProcessSDK-jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libXDocProcessSDK-jni.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libjnigraphics",
+                "libvndksupport",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libXDocProcessSDK_system_ext",
+    stem: "libXDocProcessSDK",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libXDocProcessSDK.so",
+            ],
+            shared_libs: [
+                "libdl",
+                "liblog",
+                "libYTCommon_system_ext",
+                "libEGL",
+                "libGLESv3",
+                "libc",
+                "libz",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libYTCommon_system_ext",
+    stem: "libYTCommon",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libYTCommon.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libz",
+                "libm",
+                "libstdc++",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libapssuspend-jni.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libapssuspend-jni.oplus.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libbase",
+                "libbinder_ndk",
+                "android.system.suspend-V1-ndk",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_panorama_burstcapture",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libarcsoft_panorama_burstcapture.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libarcsoft_wideselfie",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libarcsoft_wideselfie.so",
+            ],
+            shared_libs: [
+                "libmpbase_system_ext",
+                "liblog",
+                "libdl",
+                "libc",
+                "libm",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libbase-stock",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libbase-stock.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libbsproxy",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libbsproxy.so",
+            ],
+            shared_libs: [
+                "libbinder",
+                "libutils",
+                "liblog",
+                "liboplus-uah-client",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcsextimpl",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libcsextimpl.so",
+            ],
+            shared_libs: [
+                "camera_platform_flags_c_lib",
+                "libbase-stock",
+                "libexif",
+                "libui",
+                "liblog",
+                "libutilscallstack",
+                "libutils",
+                "libbinder",
+                "libbinder_ndk",
+                "libcutils",
+                "libpermission",
+                "libmedia",
+                "libmediautils",
+                "libcamera_client",
+                "libcamera_metadata",
+                "libdynamic_depth",
+                "libfmq",
+                "libgui",
+                "libhardware",
+                "libhidlbase",
+                "libimage_io",
+                "libjpeg",
+                "libmedia_codeclist",
+                "libmedia_omx",
+                "libmemunreachable",
+                "libsensorprivacy",
+                "libstagefright",
+                "libstagefright_foundation",
+                "libxml2",
+                "libyuv",
+                "android.frameworks.cameraservice.common@2.0",
+                "android.frameworks.cameraservice.service@2.2",
+                "android.frameworks.cameraservice.device@2.0",
+                "android.hardware.camera.common@1.0",
+                "android.hardware.camera.provider-V4-ndk",
+                "android.hardware.camera.provider@2.7",
+                "android.hardware.camera.device@3.6",
+                "android.hardware.camera.device-V4-ndk",
+                "android.frameworks.sensorservice@1.0",
+                "android.hardware.sensors@1.0",
+                "vendor.oplus.hardware.cameraMDM@1.0",
+                "libcameraservice",
+                "libnativewindow",
+                "libvndksupport",
+                "android.hardware.thermal@1.0",
+                "vendor.oplus.hardware.performance-V1-ndk",
+                "vendor.oplus.hardware.cameraextension@1.0",
+                "vendor.oplus.hardware.sendextcamcmd-V2-ndk",
+                "vendor.oplus.hardware.cameraextension-V1-ndk",
+                "libbsproxy",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libextendfile_system_ext",
+    stem: "libextendfile",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libextendfile.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjni_burstpmk",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libjni_burstpmk.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libandroid",
+                "libc",
+                "libm",
+                "libstdc++",
+                "libdl",
+                "libmpbase_system_ext",
+                "libarcsoft_panorama_burstcapture",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjni_wideselfie",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libjni_wideselfie.so",
+            ],
+            shared_libs: [
+                "libjnigraphics",
+                "liblog",
+                "libandroid",
+                "libc",
+                "libm",
+                "libstdc++",
+                "libdl",
+                "libarcsoft_wideselfie",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjnisingleblur_api",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libjnisingleblur_api.so",
+            ],
+            shared_libs: [
+                "libz",
+                "libjnigraphics",
+                "libvndksupport",
+                "liblog",
+                "libGLESv2",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libjnistblur_api",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libjnistblur_api.so",
+            ],
+            shared_libs: [
+                "libz",
+                "libjnigraphics",
+                "libvndksupport",
+                "liblog",
+                "libGLESv2",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liblivephoto.frc.jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/liblivephoto.frc.jni.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "libmpbase_system_ext",
+                "liblog",
+                "libandroid",
+                "libjnigraphics",
+                "libnativewindow",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libmpbase_system_ext",
+    stem: "libmpbase",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libmpbase.so",
+            ],
+            shared_libs: [
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liboplus-uah-client_system_ext",
+    stem: "liboplus-uah-client",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/liboplus-uah-client.so",
+            ],
+            shared_libs: [
+                "vendor.oplus.hardware.urcc-V1-ndk",
+                "libcutils",
+                "libutils",
+                "liblog",
+                "libbinder_ndk",
+                "libbinder",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liboplusheifwriter",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/liboplusheifwriter.so",
+            ],
+            shared_libs: [
+                "libutils",
+                "libcutils",
+                "libstagefright",
+                "libstagefright_foundation",
+                "liblog",
+                "libmedia_omx",
+                "libmedia",
+                "libmedia_codeclist",
+                "libnativehelper",
+                "libandroid_runtime",
+                "libnativewindow",
+                "libui",
+                "libgui",
+                "libbase",
+                "libjpeg",
+                "libjnigraphics",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "liboplushwui_jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/liboplushwui_jni.so",
+            ],
+            shared_libs: [
+                "libbase",
+                "libandroid",
+                "libandroid_runtime",
+                "libhwui",
+                "libandroidfw",
+                "liblog",
+                "libharfbuzz_ng",
+                "libminikin",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libortc_so.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libortc_so.oplus.so",
+            ],
+            shared_libs: [
+                "libandroid",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsatellite_audio_jni.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsatellite_audio_jni.oplus.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libbinder_ndk",
+                "libaaudio",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsingle_camera_bokeh2_native",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsingle_camera_bokeh2_native.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libnativewindow",
+                "libmpbase_system_ext",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsingle_camera_bokeh_native",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsingle_camera_bokeh_native.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libGLESv3",
+                "libEGL",
+                "libnativewindow",
+                "libmpbase_system_ext",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsoundtouch.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsoundtouch.oplus.so",
+            ],
+            shared_libs: [
+                "libandroid",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsoundtouch_jni.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsoundtouch_jni.oplus.so",
+            ],
+            shared_libs: [
+                "libandroid",
+                "liblog",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libst_mobile",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libst_mobile.so",
+            ],
+            shared_libs: [
+                "libz",
+                "libGLESv2",
+                "libEGL",
+                "liblog",
+                "libm",
+                "libc",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libst_sticker_jni",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libst_sticker_jni.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libst_mobile",
+                "libandroid",
+                "libGLESv3",
+                "libEGL",
+                "libm",
+                "libdl",
+                "libc",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libsuperNight.oplus",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/libsuperNight.oplus.so",
+            ],
+            shared_libs: [
+                "libvndksupport",
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.oplus.hardware.cameraMDM@1.0",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/system_ext/lib64/vendor.oplus.hardware.cameraMDM@1.0.so",
+            ],
+            shared_libs: [
+                "libhidlbase",
+                "liblog",
+                "libutils",
+                "libcutils",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    system_ext_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libOplusSecurity",
+    owner: "oplus/camera/aston",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/odm/lib64/libOplusSecurity.so",
+            ],
+            shared_libs: [
+                "liblog",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+    device_specific: true,
+}
+
+android_app_import {
+    name: "ExtensionsService",
+    owner: "oplus/camera/aston",
+    apk: "proprietary/system/app/ExtensionsService/ExtensionsService.apk",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+}
+
+android_app_import {
+    name: "OplusAppPlatform",
+    owner: "oplus/camera/aston",
+    apk: "proprietary/system_ext/priv-app/OplusAppPlatform/OplusAppPlatform.apk",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+    system_ext_specific: true,
+}
+
+android_app_import {
+    name: "OplusCamera",
+    owner: "oplus/camera/aston",
+    apk: "proprietary/system_ext/priv-app/OplusCamera/OplusCamera.apk",
+    overrides: [
+        "Camera2",
+        "GoogleCameraGo",
+    ],
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+    system_ext_specific: true,
+}
+
+dex_import {
+    name: "com.oplus.camera.unit.sdk.adapter",
+    owner: "oplus/camera/aston",
+    jars: [
+        "proprietary/system_ext/framework/com.oplus.camera.unit.sdk.adapter.jar",
+    ],
+    system_ext_specific: true,
+}
+
+dex_import {
+    name: "com.oplus.camera.unit.sdk",
+    owner: "oplus/camera/aston",
+    jars: [
+        "proprietary/system_ext/framework/com.oplus.camera.unit.sdk.jar",
+    ],
+    system_ext_specific: true,
+}
